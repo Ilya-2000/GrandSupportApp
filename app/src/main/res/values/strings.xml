@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GrandSupportApp</string>
+    <string-array name="menu_main">
+        <item>Смартфон - телефон</item>
+        <item>Госуслуги</item>
+        <item>Запись к врачу</item>
+        <item>Соц защита</item>
+        <item>ЖКХ</item>
+        <item>Мобильный банк</item>
+    </string-array>
+
+</resources>
