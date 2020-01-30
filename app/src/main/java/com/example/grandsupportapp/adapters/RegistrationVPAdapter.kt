@@ -1,6 +1,5 @@
 package com.example.grandsupportapp.adapters
 
-import android.app.FragmentManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.grandsupportapp.registration_steps.*
@@ -14,7 +13,7 @@ class RegistrationVPAdapter internal constructor(fragmentManager: androidx.fragm
             1 -> fragment = SecondRegFragment()
             2 -> fragment = ThirdRegFragment()
             3 -> fragment = FourRegFragment()
-            4 -> fragment = fiveRegFragment()
+            4 -> fragment = FiveRegFragment()
             5 -> fragment = SixRegFragment()
             6 -> fragment = SevenRegFragment()
             7 -> fragment = EigthFragment()

@@ -13,7 +13,7 @@ class RegistrationActivity : AppCompatActivity() {
         val viewPager = findViewById<ViewPager>(R.id.gos_reg_vp)
 
         if (viewPager != null) {
-            val adapter = RegistrationVPAdapter(fragmentManager!!)
+            val adapter = RegistrationVPAdapter(supportFragmentManager)
             viewPager.adapter = adapter
         }
     }

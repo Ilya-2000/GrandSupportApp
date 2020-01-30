@@ -13,7 +13,7 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="400dp"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:contentDescription="TODO"
             android:src="@drawable/g3"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -12,7 +12,7 @@ import com.example.grandsupportapp.R
 /**
  * A simple [Fragment] subclass.
  */
-class fiveRegFragment : Fragment() {
+class FiveRegFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
