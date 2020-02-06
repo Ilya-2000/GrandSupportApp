@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SmartphoneActivity"></activity>
+        <activity android:name=".health_steps.HealthActivity"></activity>
+        <activity android:name=".SmartphoneActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
