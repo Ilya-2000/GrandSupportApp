@@ -19,8 +19,9 @@ class MainActivity : AppCompatActivity() {
         val regBtn: CardView = findViewById(R.id.reg_menu_btn)
         val healthBtn: CardView = findViewById(R.id.health_menu_btn)
         val socBtn: CardView = findViewById(R.id.social_menu_btn)
-        val communalBtn: CardView = findViewById(R.id.communal_menu_btn)
+
         val bankBtn: CardView = findViewById(R.id.mobile_bank_menu_btn)
+        val contactsBtn: CardView = findViewById(R.id.contacts_menu_btn)
 
 
         smartphoneBtn.setOnClickListener {
@@ -36,11 +37,12 @@ class MainActivity : AppCompatActivity() {
         socBtn.setOnClickListener {
 
         }
-        communalBtn.setOnClickListener {
-
-        }
         bankBtn.setOnClickListener {
             startActivity(Intent(this, BankMainActivity::class.java))
+
+        }
+        contactsBtn.setOnClickListener {
+            startActivity(Intent(this, ContactsActivity::class.java))
 
         }
 

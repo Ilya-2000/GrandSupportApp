@@ -109,28 +109,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/communal_menu_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp">
-
-                <ImageView
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/communal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="100dp"
-                    android:text="ЖКХ"
-                    android:textSize="24sp" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
                 android:id="@+id/mobile_bank_menu_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,6 +127,27 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="100dp"
                     android:text="Банк"
+                    android:textSize="24sp" />
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/contacts_menu_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/contacts" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="100dp"
+                    android:text="Контакты"
                     android:textSize="24sp" />
 
             </androidx.cardview.widget.CardView>

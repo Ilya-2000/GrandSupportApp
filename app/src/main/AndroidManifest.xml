@@ -9,16 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".bank.mobile_payment.MobilePaymentActivity"
-            android:parentActivityName=".bank.BankMainActivity"></activity>
-        <activity android:name=".bank.BankMainActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".health_steps.HealthActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".SmartphoneActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".RegistrationActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".ContactsActivity"></activity>
+        <activity
+            android:name=".bank.mobile_payment.MobilePaymentActivity"
+            android:parentActivityName=".bank.BankMainActivity" />
+        <activity
+            android:name=".bank.BankMainActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".health_steps.HealthActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SmartphoneActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
