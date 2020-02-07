@@ -14,7 +14,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Вы успешно закончили регистрацию!"
+            android:text="Вы успешно закончили регистрацию! \n Теперь Вы можете воспользоваться услугами государственного портала. "
             android:textAlignment="center"
             android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
