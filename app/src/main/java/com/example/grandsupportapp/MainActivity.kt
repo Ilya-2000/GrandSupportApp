@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import androidx.cardview.widget.CardView
+import com.example.grandsupportapp.bank.BankMainActivity
 import com.example.grandsupportapp.health_steps.HealthActivity
 import kotlinx.android.synthetic.main.activity_main.view.*
 
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         bankBtn.setOnClickListener {
+            startActivity(Intent(this, BankMainActivity::class.java))
 
         }
 
