@@ -28,4 +28,12 @@ class RegistrationVPAdapter internal constructor(fragmentManager: androidx.fragm
     override fun getCount(): Int {
        return count
     }
+    override fun getPageTitle(position: Int): CharSequence? {
+        var t: String? = null
+        when (position) {
+            0 -> t = "1 шаг"
+            1 -> t = "2 шаг"
+        }
+        return t
+    }
 }
