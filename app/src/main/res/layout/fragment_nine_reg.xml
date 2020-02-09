@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/img_fragment"
             android:layout_width="400dp"
             android:layout_height="400dp"
             android:src="@drawable/g15"

@@ -9,7 +9,7 @@ class RegistrationVPAdapter internal constructor(fragmentManager: androidx.fragm
     override fun getItem(position: Int): Fragment {
         var fragment: Fragment? = null
         when(position) {
-            0 -> fragment = FirstRegFragment()
+            0 -> fragment = StartFragment()
             1 -> fragment = SecondRegFragment()
             2 -> fragment = ThirdRegFragment()
             3 -> fragment = FourRegFragment()
