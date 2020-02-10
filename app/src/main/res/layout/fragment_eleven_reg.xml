@@ -12,15 +12,15 @@
 
         <ImageView
             android:id="@+id/img_fragment"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
+            android:layout_width="300dp"
+            android:layout_height="350dp"
             android:src="@drawable/g19"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.91" />
 
         <TextView
             android:id="@+id/textView2"

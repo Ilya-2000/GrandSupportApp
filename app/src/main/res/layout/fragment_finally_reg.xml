@@ -26,6 +26,7 @@
 
         <Button
             android:id="@+id/finally_reg_btn"
+            android:background="@drawable/buttonshape"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="118dp"
@@ -38,7 +39,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
-            android:background="@drawable/buttonshape"
             android:shadowColor="#A8A8A8"
             android:shadowDx="0"
             android:shadowDy="0"
