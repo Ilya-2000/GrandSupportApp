@@ -33,6 +33,18 @@ class RegistrationVPAdapter internal constructor(fragmentManager: androidx.fragm
         when (position) {
             0 -> t = "1 шаг"
             1 -> t = "2 шаг"
+            2 -> t = "3 шаг"
+            3 -> t = "4 шаг"
+            4 -> t = "5 шаг"
+            5 -> t = "6 шаг"
+            6 -> t = "7 шаг"
+            7 -> t = "8 шаг"
+            8 -> t = "9 шаг"
+            9 -> t = "10 шаг"
+            10 -> t = "11 шаг"
+            11 -> t = "Завершение"
+
+
         }
         return t
     }

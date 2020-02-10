@@ -12,27 +12,17 @@
 
         <ImageView
             android:id="@+id/img_fragment"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
+            android:layout_width="300dp"
+            android:layout_height="350dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/g9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Шаг 5"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.051" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <TextView
             android:id="@+id/textView2"
@@ -41,10 +31,11 @@
             android:text='Если у Вас имеется аккаунт, нажмите войти, иначе нажмите "регистрация"'
             android:textAlignment="center"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/img_fragment"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.19999999" />
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
