@@ -47,6 +47,7 @@ class StartFragment : Fragment() {
         image.setImageDrawable(d)
         dialog.show()
         image.setOnClickListener {
+            image.setImageDrawable(null)
             dialog.cancel()
         }
 
