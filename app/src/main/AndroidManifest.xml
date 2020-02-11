@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".bank.communal_payment.CommunalPaymentActivity"
-            android:parentActivityName=".bank.BankMainActivity"></activity>
-
+        <activity android:name=".bank.money_transfer.TransferActivity"></activity>
+        <activity
+            android:name=".bank.communal_payment.CommunalPaymentActivity"
+            android:parentActivityName=".bank.BankMainActivity" />
         <activity android:name=".ContactsActivity" />
         <activity
             android:name=".bank.mobile_payment.MobilePaymentActivity"
