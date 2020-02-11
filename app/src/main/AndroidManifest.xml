@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".bank.communal_payment.CommunalPaymentActivity"></activity>
         <activity
             android:name=".FullscreenImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
