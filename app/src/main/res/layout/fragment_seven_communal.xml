@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".bank.communal_payment.FirstCommunalFragment">
+    tools:context=".bank.communal_payment.SevenCommunalFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,27 +16,26 @@
             android:layout_marginStart="55dp"
             android:layout_marginEnd="56dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/communal1"
+            android:src="@drawable/communal8_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.956" />
+            app:layout_constraintVertical_bias="0.888" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text='Перейдите во вкладку "платежи", найдите кнопку "ЖКХ и домашний телефон и нажмите на неё"'
+            android:text="Если Вы выберите способ сканирования QR или штрихкода, у Вас включится камера. Наведите ее на QR код на Вашей квитанции и дождитесь распознавания его. Если код не воспринимается, включите вспышку (значок молнии справа сверху) и наведите снова."
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.138" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>
