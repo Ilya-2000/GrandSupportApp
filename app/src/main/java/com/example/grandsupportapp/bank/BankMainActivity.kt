@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.cardview.widget.CardView
 import com.example.grandsupportapp.R
+import com.example.grandsupportapp.bank.communal_payment.CommunalPaymentActivity
 import com.example.grandsupportapp.bank.mobile_payment.MobilePaymentActivity
 
 class BankMainActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class BankMainActivity : AppCompatActivity() {
         }
 
         communalPayBtn.setOnClickListener {
-            startActivity(Intent(this, MobilePaymentActivity::class.java))
+            startActivity(Intent(this, CommunalPaymentActivity::class.java))
         }
 
     }

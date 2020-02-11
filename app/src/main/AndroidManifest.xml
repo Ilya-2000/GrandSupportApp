@@ -9,17 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".bank.communal_payment.CommunalPaymentActivity"></activity>
-        <activity
-            android:name=".FullscreenImageActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_fullscreen_image"
-            android:parentActivityName=".RegistrationActivity"
-            android:theme="@style/FullscreenTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.grandsupportapp.RegistrationActivity" />
-        </activity>
+        <activity android:name=".bank.communal_payment.CommunalPaymentActivity"
+            android:parentActivityName=".bank.BankMainActivity"></activity>
+
         <activity android:name=".ContactsActivity" />
         <activity
             android:name=".bank.mobile_payment.MobilePaymentActivity"
