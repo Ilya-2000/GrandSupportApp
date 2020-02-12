@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".bank.communal_payment.CommunalPaymentActivity">
 
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/communal_payment_vp"
         android:layout_width="match_parent"
