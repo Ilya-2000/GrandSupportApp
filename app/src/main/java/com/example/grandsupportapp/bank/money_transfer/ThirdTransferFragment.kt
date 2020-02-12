@@ -1,4 +1,4 @@
-package com.example.grandsupportapp.bank.mobile_payment
+package com.example.grandsupportapp.bank.money_transfer
 
 
 import android.app.Dialog
@@ -17,13 +17,14 @@ import kotlinx.android.synthetic.main.full_img.*
 /**
  * A simple [Fragment] subclass.
  */
-class FourMobilePaymentFragment : Fragment() {
+class ThirdTransferFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_four_mobile_payment, container, false)
+        // Inflate the layout for this fragment
+        val root = inflater.inflate(R.layout.fragment_third_transfer, container, false)
         val img = root.findViewById<ImageView>(R.id.img_fragment)
         var id = img.drawable
 

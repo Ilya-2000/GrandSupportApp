@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".bank.communal_payment.ElevenCommunalFragment">
+    tools:context=".bank.money_transfer.ThirdTransferFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,22 +14,20 @@
             android:id="@+id/img_fragment"
             android:layout_width="300dp"
             android:layout_height="350dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginEnd="56dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/communal14"
+            android:src="@drawable/transfer3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.864" />
+            app:layout_constraintVertical_bias="0.829" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Оплата прошла успешно!"
+            android:text="Наберите номер карты на которую вы собираетесь сделать перевод."
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,26 +36,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.138" />
-
-        <Button
-            android:id="@+id/communal_pay_final_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:layout_marginEnd="71dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/buttonshape"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
-            android:text="Завершить"
-            app:layout_constraintBottom_toTopOf="@+id/img_fragment"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.246" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </FrameLayout>
+</FrameLayout>
