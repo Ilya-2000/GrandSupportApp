@@ -1,7 +1,8 @@
-package com.example.grandsupportapp
+package com.example.grandsupportapp.smartphone
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.grandsupportapp.R
 
 class SmartphoneActivity : AppCompatActivity() {
 

@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".social_network.SocialNetworkActivity"></activity>
+        <activity android:name=".smartphone.calls.CallMainActivity"></activity>
+        <activity android:name=".smartphone.tools_learn.ToolsMainActivity" />
+        <activity android:name=".smartphone.settings_learn.SettingsMainActivity" />
+
+        <activity android:name=".smartphone.SmartphoneActivity" />
+        <activity android:name=".social_network.SocialNetworkActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,13 +40,11 @@
         <activity
             android:name=".health_steps.HealthActivity"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".SmartphoneActivity"
-            android:parentActivityName=".MainActivity" />
+
         <activity
             android:name=".RegistrationActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
