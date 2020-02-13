@@ -25,6 +25,7 @@ class FinallyRegFragment : Fragment() {
         val finalBtn = root.findViewById<Button>(R.id.finally_reg_btn)
         finalBtn.setOnClickListener {
             startActivity(Intent(activity, MainActivity::class.java))
+            onDestroy()
         }
         return root
     }

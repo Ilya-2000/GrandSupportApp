@@ -32,6 +32,8 @@ class ElevenCommunalFragment : Fragment() {
 
         finalBtn.setOnClickListener {
             startActivity(Intent(activity, BankMainActivity::class.java))
+            onDestroy()
+
         }
         val img = root.findViewById<ImageView>(R.id.img_fragment)
         var id = img.drawable

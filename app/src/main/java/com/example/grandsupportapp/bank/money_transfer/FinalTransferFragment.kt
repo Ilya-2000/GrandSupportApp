@@ -31,6 +31,7 @@ class FinalTransferFragment : Fragment() {
 
         finalBtn.setOnClickListener {
             startActivity(Intent(activity, BankMainActivity::class.java))
+            onDestroy()
         }
         return root
     }

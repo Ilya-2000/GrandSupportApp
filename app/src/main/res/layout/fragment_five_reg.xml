@@ -28,6 +28,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:text='Если у Вас имеется аккаунт, нажмите войти, иначе нажмите "регистрация"'
             android:textAlignment="center"
             android:textSize="18sp"

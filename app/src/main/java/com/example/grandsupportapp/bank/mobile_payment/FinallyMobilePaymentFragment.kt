@@ -25,6 +25,7 @@ class FinallyMobilePaymentFragment : Fragment() {
         val finalBtn = root.findViewById<Button>(R.id.final_mob_payment_btn)
         finalBtn.setOnClickListener {
             startActivity(Intent(activity, BankMainActivity::class.java))
+            onDestroy()
         }
         return root
     }
