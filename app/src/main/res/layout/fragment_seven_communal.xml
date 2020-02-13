@@ -21,21 +21,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.888" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.89" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="Если Вы выберите способ сканирования QR или штрихкода, у Вас включится камера. Наведите ее на QR код на Вашей квитанции и дождитесь распознавания его. Если код не воспринимается, включите вспышку (значок молнии справа сверху) и наведите снова."
             android:textAlignment="center"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/img_fragment"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.138" />
+            app:layout_constraintVertical_bias="0.354" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

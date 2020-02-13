@@ -14,13 +14,13 @@
             android:id="@+id/img_fragment"
             android:layout_width="300dp"
             android:layout_height="350dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginEnd="56dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:src="@drawable/communal14"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             app:layout_constraintVertical_bias="0.864" />
@@ -43,8 +43,8 @@
             android:id="@+id/communal_pay_final_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:layout_marginEnd="71dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/buttonshape"
             android:shadowColor="#A8A8A8"
@@ -54,10 +54,10 @@
             android:text="Завершить"
             app:layout_constraintBottom_toTopOf="@+id/img_fragment"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.246" />
+            app:layout_constraintVertical_bias="0.281" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
