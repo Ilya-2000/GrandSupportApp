@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".smartphone.tools_learn.StartToolsFragment">
+    tools:context=".smartphone.tools_learn.NineToolsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,14 +29,15 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="3dp"
             android:layout_marginBottom="5dp"
-            android:text='Инструменты - приложения помощники, которые заметно упрощают жизнь человеку. Мы разберём такие инструменты как будильник, секундомер, таймер, калькулятор и диктофон. \n Нажмите на приложение "часы".'
+            android:text='Перейдите в приложение "Калькулятор". '
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/img_fragment"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.306" />

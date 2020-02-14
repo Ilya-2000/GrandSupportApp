@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".smartphone.tools_learn.StartToolsFragment">
+    tools:context=".smartphone.tools_learn.ThirdToolsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/tool1"
+            android:src="@drawable/tool4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text='Инструменты - приложения помощники, которые заметно упрощают жизнь человеку. Мы разберём такие инструменты как будильник, секундомер, таймер, калькулятор и диктофон. \n Нажмите на приложение "часы".'
+            android:text="Будильник создан и включен. Для отключения, нажмите на кнопку справа от времени. Для изменения будильника, нажмите на него."
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/img_fragment"

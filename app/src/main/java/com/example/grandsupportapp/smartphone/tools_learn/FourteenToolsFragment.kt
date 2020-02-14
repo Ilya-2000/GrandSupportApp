@@ -17,13 +17,13 @@ import kotlinx.android.synthetic.main.full_img.*
 /**
  * A simple [Fragment] subclass.
  */
-class StartToolsFragment : Fragment() {
+class FourteenToolsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_start_tools, container, false)
+        val root = inflater.inflate(R.layout.fragment_fourteen_tools, container, false)
         val img = root.findViewById<ImageView>(R.id.img_fragment)
         var id = img.drawable
 
@@ -51,5 +51,6 @@ class StartToolsFragment : Fragment() {
         }
 
     }
+
 
 }
