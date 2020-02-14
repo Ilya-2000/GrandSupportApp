@@ -9,6 +9,7 @@ import android.widget.ListView
 import androidx.cardview.widget.CardView
 import com.example.grandsupportapp.bank.BankMainActivity
 import com.example.grandsupportapp.health_steps.HealthActivity
+import com.example.grandsupportapp.smartphone.SmartphoneActivity
 import com.example.grandsupportapp.social_network.SocialNetworkActivity
 import kotlinx.android.synthetic.main.activity_main.view.*
 
