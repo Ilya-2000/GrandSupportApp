@@ -17,13 +17,13 @@ import kotlinx.android.synthetic.main.full_img.*
 /**
  * A simple [Fragment] subclass.
  */
-class FiveCallFragment : Fragment() {
+class EightCallFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_five_call, container, false)
+        val root = inflater.inflate(R.layout.fragment_eight_call, container, false)
         val img = root.findViewById<ImageView>(R.id.img_fragment)
         var id = img.drawable
 

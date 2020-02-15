@@ -30,6 +30,7 @@ class FiveteenToolsFragment : Fragment() {
         val finalBtn = root.findViewById<Button>(R.id.final_tools_btn)
         finalBtn.setOnClickListener {
             startActivity(Intent(activity!!, SmartphoneActivity::class.java))
+            onDestroy()
         }
         return root
     }

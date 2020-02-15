@@ -26,6 +26,7 @@ class FinalSettingsFragment : Fragment() {
 
         finalBtn.setOnClickListener {
             startActivity(Intent(activity!!, SmartphoneActivity::class.java))
+            onDestroy()
         }
         return root
     }
