@@ -45,8 +45,8 @@ class CallVPAdapter internal constructor(fragmentManager: androidx.fragment.app.
             7 -> t = "8 шаг"
             8 -> t = "9 шаг"
             9 -> t = "10 шаг"
-            10 -> t = "шаг 11"
-            10 -> t = "Завершение"
+            10 -> t = "11 шаг"
+            11 -> t = "Завершение"
 
 
         }

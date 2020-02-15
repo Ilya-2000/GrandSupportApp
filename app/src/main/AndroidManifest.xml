@@ -9,11 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".smartphone.calls.CallMainActivity"></activity>
+        <activity android:name=".smartphone.basic_management.SecondManagementActivity"></activity>
+        <activity android:name=".smartphone.basic_management.FirstManagementActivity" />
+        <activity android:name=".smartphone.basic_management.StartManagementActivity" />
+        <activity android:name=".smartphone.calls.CallMainActivity" />
         <activity android:name=".smartphone.tools_learn.ToolsMainActivity" />
         <activity android:name=".smartphone.settings_learn.SettingsMainActivity" />
-
-        <activity android:name=".smartphone.SmartphoneActivity"  android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".smartphone.SmartphoneActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".social_network.SocialNetworkActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -40,7 +44,6 @@
         <activity
             android:name=".health_steps.HealthActivity"
             android:parentActivityName=".MainActivity" />
-
         <activity
             android:name=".RegistrationActivity"
             android:parentActivityName=".MainActivity" />
