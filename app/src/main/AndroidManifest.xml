@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".smartphone.basic_management.SecondManagementActivity"></activity>
+        <activity android:name=".smartphone.basic_management.FinalManagementActivity"></activity>
+        <activity android:name=".smartphone.basic_management.SixManagementActivity" />
+        <activity android:name=".smartphone.basic_management.FiveManagementActivity" />
+        <activity android:name=".smartphone.basic_management.FourManagementActivity" />
+        <activity android:name=".smartphone.basic_management.ThirdManagementActivity" />
+        <activity android:name=".smartphone.basic_management.SecondManagementActivity" />
         <activity android:name=".smartphone.basic_management.FirstManagementActivity" />
         <activity android:name=".smartphone.basic_management.StartManagementActivity" />
         <activity android:name=".smartphone.calls.CallMainActivity" />
