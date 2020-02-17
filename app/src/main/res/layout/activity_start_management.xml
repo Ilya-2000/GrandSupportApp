@@ -89,7 +89,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:background="#eeed"
+        android:background="#BDBDBD"
         android:textColor="#fff"
         android:text="Далее"
         app:layout_constraintBottom_toBottomOf="parent"
