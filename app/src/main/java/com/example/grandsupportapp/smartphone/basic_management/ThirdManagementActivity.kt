@@ -11,7 +11,7 @@ class ThirdManagementActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third_management)
-        val nextBtn = findViewById<Button>(R.id.next_management_fragment_btn)
+        val nextBtn = findViewById<Button>(R.id.next_third_management_btn)
 
         nextBtn.setOnClickListener {
             startActivity(Intent(this, FourManagementActivity::class.java))
