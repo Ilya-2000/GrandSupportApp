@@ -1,11 +1,13 @@
 package com.example.grandsupportapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import com.example.grandsupportapp.smartphone.basic_management.StartManagementActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -18,8 +20,21 @@ class SplashActivity : AppCompatActivity() {
         img.startAnimation(anim)
 
         var handler = Handler().postDelayed(Runnable {
-            startActivity(Intent(this, MainActivity::class.java))
+            checkStart()
             finish()
         }, 2500)
+    }
+
+    fun checkStart() {
+        var shared = getSharedPreferences("fstart", Context.MODE_PRIVATE)
+        var isVisited: Boolean = shared.getBoolean("visited", false)
+        if (!isVisited) {
+            startActivity(Intent(this,StartManagementActivity::class.java))
+            var editor = shared.edit()
+            editor.putBoolean("visited", true)
+            editor.apply()
+        } else {
+            startActivity(Intent(this,MainActivity::class.java))
+        }
     }
 }
