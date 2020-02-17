@@ -32,6 +32,7 @@ class StartManagementActivity : AppCompatActivity() {
         nextBtn.setOnClickListener {
             if (b) {
                 startActivity(Intent(this, FirstManagementActivity::class.java))
+                finish()
             } else {
                 Toast.makeText(this,"Включите перключатель", Toast.LENGTH_LONG).show()
             }

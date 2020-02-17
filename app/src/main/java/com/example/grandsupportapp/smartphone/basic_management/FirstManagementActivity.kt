@@ -14,6 +14,7 @@ class FirstManagementActivity : AppCompatActivity() {
         val nextBtn = findViewById<Button>(R.id.first_next_management_btn)
         nextBtn.setOnClickListener {
             startActivity(Intent(this, SecondManagementActivity::class.java))
+            finish()
         }
     }
 }

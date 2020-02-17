@@ -14,6 +14,7 @@ class FiveManagementActivity : AppCompatActivity() {
         val nextBtn = findViewById<Button>(R.id.five_management_next_btn)
         nextBtn.setOnClickListener {
             startActivity(Intent(this, SixManagementActivity::class.java))
+            finish()
         }
     }
 }

@@ -26,6 +26,7 @@ class SecondManagementFragment : Fragment() {
         nextBtn.setOnClickListener {
             startActivity(Intent(activity!!, ThirdManagementActivity::class.java))
             onDestroy()
+
         }
         return root
     }

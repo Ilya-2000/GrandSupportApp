@@ -19,6 +19,7 @@ class FourManagementActivity : AppCompatActivity() {
         nextBtn.setOnClickListener {
             if (editText.text.contains("Андроид - это просто!")) {
                 startActivity(Intent(this, FiveManagementActivity::class.java))
+                finish()
             } else {
                 Toast.makeText(this, "Введите требуемый текст!", Toast.LENGTH_LONG).show()
             }

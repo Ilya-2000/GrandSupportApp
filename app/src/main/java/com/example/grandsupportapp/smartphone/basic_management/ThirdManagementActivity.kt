@@ -15,6 +15,8 @@ class ThirdManagementActivity : AppCompatActivity() {
 
         nextBtn.setOnClickListener {
             startActivity(Intent(this, FourManagementActivity::class.java))
+            finish()
+
         }
     }
 }
