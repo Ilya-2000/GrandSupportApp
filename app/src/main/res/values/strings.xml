@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Для старшего поколения</string>
+    <string name="app_name">Навыки для мудрых</string>
     <string-array name="menu_main">
         <item>Смартфон - телефон</item>
         <item>Госуслуги</item>
