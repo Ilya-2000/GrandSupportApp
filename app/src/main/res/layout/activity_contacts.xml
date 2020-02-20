@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text='Мобильное приложение "Для старшего поколения"'
+        android:text='Мобильное приложение "Навыки для мудрых"'
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"

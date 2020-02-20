@@ -20,11 +20,11 @@
             android:text="Вы успешно совершили перевод. Переводы на свои счета или счета других людей совершаются аналогично."
             android:textAlignment="center"
             android:textSize="28sp"
-            app:layout_constraintBottom_toTopOf="@+id/finally_reg_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.52" />
+            app:layout_constraintVertical_bias="0.060000002" />
 
         <Button
             android:id="@+id/final_transfer_btn"
