@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.grandsupportapp">
+    package="com.impact.grandsupportapp">
 
     <application
         android:allowBackup="true"
@@ -9,22 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".smartphone.basic_management.FinalManagementActivity"></activity>
-        <activity android:name=".smartphone.basic_management.SixManagementActivity" />
-        <activity android:name=".smartphone.basic_management.FiveManagementActivity" />
-        <activity android:name=".smartphone.basic_management.FourManagementActivity" />
-        <activity android:name=".smartphone.basic_management.ThirdManagementActivity" />
-        <activity android:name=".smartphone.basic_management.SecondManagementActivity" />
-        <activity android:name=".smartphone.basic_management.FirstManagementActivity" />
-        <activity android:name=".smartphone.basic_management.StartManagementActivity" />
-        <activity android:name=".smartphone.calls.CallMainActivity" />
-        <activity android:name=".smartphone.tools_learn.ToolsMainActivity" />
-        <activity android:name=".smartphone.settings_learn.SettingsMainActivity" />
+        <activity android:name="com.impact.grandsupportapp.smartphone.basic_management.FinalManagementActivity"></activity>
+        <activity android:name="com.impact.grandsupportapp.smartphone.basic_management.SixManagementActivity" />
+        <activity android:name="com.impact.grandsupportapp.smartphone.basic_management.FiveManagementActivity" />
+        <activity android:name="com.impact.grandsupportapp.smartphone.basic_management.FourManagementActivity" />
+        <activity android:name="com.impact.grandsupportapp.smartphone.basic_management.ThirdManagementActivity" />
+        <activity android:name="com.impact.grandsupportapp.smartphone.basic_management.SecondManagementActivity" />
+        <activity android:name="com.impact.grandsupportapp.smartphone.basic_management.FirstManagementActivity" />
+        <activity android:name="com.impact.grandsupportapp.smartphone.basic_management.StartManagementActivity" />
+        <activity android:name="com.impact.grandsupportapp.smartphone.calls.CallMainActivity" />
+        <activity android:name="com.impact.grandsupportapp.smartphone.tools_learn.ToolsMainActivity" />
+        <activity android:name="com.impact.grandsupportapp.smartphone.settings_learn.SettingsMainActivity" />
         <activity
-            android:name=".smartphone.SmartphoneActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".social_network.SocialNetworkActivity" />
-        <activity android:name=".SplashActivity">
+            android:name="com.impact.grandsupportapp.smartphone.SmartphoneActivity"
+            android:parentActivityName="com.impact.grandsupportapp.MainActivity" />
+        <activity android:name="com.impact.grandsupportapp.social_network.SocialNetworkActivity" />
+        <activity android:name="com.impact.grandsupportapp.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,27 +32,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".bank.money_transfer.TransferActivity"
-            android:parentActivityName=".bank.BankMainActivity" />
+            android:name="com.impact.grandsupportapp.bank.money_transfer.TransferActivity"
+            android:parentActivityName="com.impact.grandsupportapp.bank.BankMainActivity" />
         <activity
-            android:name=".bank.communal_payment.CommunalPaymentActivity"
-            android:parentActivityName=".bank.BankMainActivity" />
+            android:name="com.impact.grandsupportapp.bank.communal_payment.CommunalPaymentActivity"
+            android:parentActivityName="com.impact.grandsupportapp.bank.BankMainActivity" />
         <activity
-            android:name=".ContactsActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="com.impact.grandsupportapp.ContactsActivity"
+            android:parentActivityName="com.impact.grandsupportapp.MainActivity" />
         <activity
-            android:name=".bank.mobile_payment.MobilePaymentActivity"
-            android:parentActivityName=".bank.BankMainActivity" />
+            android:name="com.impact.grandsupportapp.bank.mobile_payment.MobilePaymentActivity"
+            android:parentActivityName="com.impact.grandsupportapp.bank.BankMainActivity" />
         <activity
-            android:name=".bank.BankMainActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="com.impact.grandsupportapp.bank.BankMainActivity"
+            android:parentActivityName="com.impact.grandsupportapp.MainActivity" />
         <activity
-            android:name=".health_steps.HealthActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="com.impact.grandsupportapp.health_steps.HealthActivity"
+            android:parentActivityName="com.impact.grandsupportapp.MainActivity" />
         <activity
-            android:name=".RegistrationActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity" />
+            android:name="com.impact.grandsupportapp.RegistrationActivity"
+            android:parentActivityName="com.impact.grandsupportapp.MainActivity" />
+        <activity android:name="com.impact.grandsupportapp.MainActivity" />
     </application>
 
 </manifest>
