@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
        /* smartphoneBtn.setOnClickListener {
             startActivity(Intent(this, SmartphoneActivity::class.java))
         }*/
-        regBtn.setOnClickListener {
+        /*regBtn.setOnClickListener {
             startActivity(Intent(this, RegistrationActivity::class.java))
-        }
+        }*/
        /* healthBtn.setOnClickListener {
             startActivity(Intent(this, HealthActivity::class.java))
 
@@ -40,11 +40,6 @@ class MainActivity : AppCompatActivity() {
         }*/
         contactsBtn.setOnClickListener {
             startActivity(Intent(this, ContactsActivity::class.java))
-            val a = 5
-            val b = 3
-            if(a < b) {
-                Log.d("tag", "test")
-            }
 
         }
 
