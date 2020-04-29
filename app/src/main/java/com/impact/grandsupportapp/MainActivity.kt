@@ -3,11 +3,9 @@ package com.impact.grandsupportapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.cardview.widget.CardView
-import com.impact.grandsupportapp.bank.BankMainActivity
-import com.impact.grandsupportapp.health_steps.HealthActivity
-import com.impact.grandsupportapp.smartphone.SmartphoneActivity
-import com.impact.grandsupportapp.social_network.SocialNetworkActivity
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,25 +21,30 @@ class MainActivity : AppCompatActivity() {
         val contactsBtn: CardView = findViewById(R.id.contacts_menu_btn)
 
 
-        smartphoneBtn.setOnClickListener {
+       /* smartphoneBtn.setOnClickListener {
             startActivity(Intent(this, SmartphoneActivity::class.java))
-        }
+        }*/
         regBtn.setOnClickListener {
             startActivity(Intent(this, RegistrationActivity::class.java))
         }
-        healthBtn.setOnClickListener {
+       /* healthBtn.setOnClickListener {
             startActivity(Intent(this, HealthActivity::class.java))
 
-        }
-        socBtn.setOnClickListener {
+        }*/
+       /* socBtn.setOnClickListener {
             startActivity(Intent(this, SocialNetworkActivity::class.java))
-        }
-        bankBtn.setOnClickListener {
+        }*/
+       /* bankBtn.setOnClickListener {
             startActivity(Intent(this, BankMainActivity::class.java))
 
-        }
+        }*/
         contactsBtn.setOnClickListener {
             startActivity(Intent(this, ContactsActivity::class.java))
+            val a = 5
+            val b = 3
+            if(a < b) {
+                Log.d("tag", "test")
+            }
 
         }
 
