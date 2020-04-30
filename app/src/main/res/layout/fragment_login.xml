@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.LoginFragment"
+    android:background="@mipmap/bg_blue">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Навыки для мудрых"
+            android:textColor="#fff"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            />
+
+        <include
+            android:id="@+id/login_lay"
+            layout="@layout/login_card_layout"
+            android:visibility="visible" />
+        <include
+            android:id="@+id/reg_lay"
+            layout="@layout/registration_card_layout"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom">
+
+            <Button
+                android:id="@+id/tab_login_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:text="Вход"
+                android:textAllCaps="false"
+                android:layout_weight="0.5"
+                android:textColor="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
+                />
+            <Button
+                android:id="@+id/tab_reg_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:text="Регистрация"
+                android:textAllCaps="false"
+                android:layout_weight="0.5"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="#fff"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

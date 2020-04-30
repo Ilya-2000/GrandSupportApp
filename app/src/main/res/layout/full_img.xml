@@ -4,9 +4,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+   <!-- <ImageView
         android:id="@+id/img_full_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/srmartphone" />
+        app:srcCompat="@drawable/srmartphone" /> -->
 </LinearLayout>
