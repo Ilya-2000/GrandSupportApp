@@ -40,7 +40,7 @@ class LoginFragment : Fragment(), LoginContract {
         val emailLoginText = root.findViewById<EditText>(R.id.email_login_text)
         val passwordLoginText = root.findViewById<EditText>(R.id.password_login_text)
         val enterLoginBtn = root.findViewById<Button>(R.id.enter_login_btn)
-        ///
+
         val tabLoginBtn = root.findViewById<Button>(R.id.tab_login_btn)
         val tabRegBtn = root.findViewById<Button>(R.id.tab_reg_btn)
         val loginCard = root.findViewById<CardView>(R.id.login_lay)
@@ -77,7 +77,7 @@ class LoginFragment : Fragment(), LoginContract {
             val email: String = emailRegText.text.toString()
             val password: String = passRegText.text.toString()
             val password2: String = pass2RegText.text.toString()
-            val name: String = name_reg_text.text.toString()
+            val name: String = userNameRegText.text.toString()
             val user = User(name, email, password)
             val a = loginPresenter.CheckContentRegistrationData(user)
             val b = loginPresenter.CheckFillRegistrationData(user)

@@ -23,18 +23,19 @@ class SplashFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_splash, container, false)
         val navController = findNavController()
-        splashWork(navController)
+        //splashWork(navController)
+        navController.navigate(R.id.action_splashFragment_to_loginFragment)
 
         return root
     }
 
-     private fun splashWork(navController: NavController) {
+    /* private fun splashWork(navController: NavController) {
         val handler = Handler()
         handler.postDelayed(Runnable {
             navController.navigate(R.id.action_splashFragment_to_loginFragment)
 
 
         }, 2000)
-    }
+    }*/
 
 }

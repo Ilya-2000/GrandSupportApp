@@ -48,11 +48,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
 
     //moxy
-    implementation 'com.arello-mobile:moxy:1.5.6'
-    implementation 'com.arello-mobile:moxy-app-compat:1.5.5'
-    implementation 'tech.schoolhelper:moxy-x-androidx:1.7.0'
-    implementation 'tech.schoolhelper:moxy-x-material:1.7.0'
-    kapt 'com.arello-mobile:moxy-compiler:1.5.5'
+    
 
     //firebase
 
