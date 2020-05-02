@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "148478206599",
+    "firebase_url": "https://grand-support.firebaseio.com",
+    "project_id": "grand-support",
+    "storage_bucket": "grand-support.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148478206599:android:b1cd38feeb3af8046d8e22",
+        "android_client_info": {
+          "package_name": "com.impact.grandsupportapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148478206599-en1vhqbakdbnrhn4u1th8fum2g0edq48.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.impact.grandsupportapp",
+            "certificate_hash": "0757c45a9e031fdeb3d7f74f9c16488a479d5112"
+          }
+        },
+        {
+          "client_id": "148478206599-snlj2a82jrrei6tjrq2hnch8f6g3q2gu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTUpwd3WQrmOPojptYwlOsvLKfnTK1HAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148478206599-snlj2a82jrrei6tjrq2hnch8f6g3q2gu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -16,6 +16,10 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
+    <!--error message -->
+    <string name="error_input_login">Неправильно введен email или пароль!</string>
+    <string name="error_empty_login">Все поля должны быть заполнены!</string>
+
     <!-- TODO: Remove or change this placeholder text -->
 
 

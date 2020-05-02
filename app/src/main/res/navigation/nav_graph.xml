@@ -18,10 +18,32 @@
         android:id="@+id/courseFragment"
         android:name="com.impact.grandsupportapp.ui.CourseFragment"
         android:label="fragment_course"
-        tools:layout="@layout/fragment_course" />
+        tools:layout="@layout/fragment_course" >
+        <action
+            android:id="@+id/action_courseFragment_to_lessonListFragment"
+            app:destination="@id/lessonListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.impact.grandsupportapp.ui.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_courseFragment"
+            app:destination="@id/courseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lessonListFragment"
+        android:name="com.impact.grandsupportapp.ui.LessonListFragment"
+        android:label="fragment_lesson_list"
+        tools:layout="@layout/fragment_lesson_list" >
+        <action
+            android:id="@+id/action_lessonListFragment_to_lessonPlaceFragment"
+            app:destination="@id/lessonPlaceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lessonPlaceFragment"
+        android:name="com.impact.grandsupportapp.ui.LessonPlaceFragment"
+        android:label="fragment_lesson_place"
+        tools:layout="@layout/fragment_lesson_place" />
 </navigation>
