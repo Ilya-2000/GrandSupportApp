@@ -19,7 +19,7 @@
     <!--error message -->
     <string name="error_input_login">Неправильно введен email или пароль!</string>
     <string name="error_empty_login">Все поля должны быть заполнены!</string>
-
+    <string name="auth_fail">Ошибка авторизации! \nПовторите попытку</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 

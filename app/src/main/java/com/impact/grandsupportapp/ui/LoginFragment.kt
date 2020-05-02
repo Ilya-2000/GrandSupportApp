@@ -12,8 +12,12 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
 
 import com.impact.grandsupportapp.R
+import com.impact.grandsupportapp.data.User
+import com.impact.grandsupportapp.mvp.model.UserModel
 import com.impact.grandsupportapp.mvp.presenter.login.LoginContract
 import com.impact.grandsupportapp.mvp.presenter.login.LoginPresenter
+import kotlinx.android.synthetic.main.registration_card_layout.*
+import kotlin.math.log
 
 /**
  * A simple [Fragment] subclass.
@@ -47,20 +51,53 @@ class LoginFragment : Fragment(), LoginContract {
         enterLoginBtn.setOnClickListener {
             val email: String = emailLoginText.text.toString()
             val password:String = passwordLoginText.text.toString()
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                if (email.length > 4 && email.contains("@") && password.length > 4) {
-                    loginPresenter.FireBaseLogin(email, password)
-                    navController.navigate(R.id.action_loginFragment_to_courseFragment)
-                } else {
-                    Toast.makeText(activity, loginPresenter.ShowInputCaution(), Toast.LENGTH_LONG).show()
-
-                }
+            val user = User("", email, password)
+            val a = loginPresenter.CheckContentLoginData(user)
+            val b = loginPresenter.CheckFillLoginData(user)
+            if (a && b) {
+                loginPresenter.FireBaseLogin(user)
             } else {
-                Toast.makeText(activity, loginPresenter.ShowEmptyInputCaution(), Toast.LENGTH_LONG).show()
+                if (!a) {
+                    Toast.makeText(activity, loginPresenter.ShowEmptyInputCaution(), Toast.LENGTH_LONG).show()
+                } else if (!b) {
+                    Toast.makeText(activity, loginPresenter.ShowInputCaution(), Toast.LENGTH_LONG).show()
+                }
             }
+            if (loginPresenter.OnSuccess()) {
+                navController.navigate(R.id.action_loginFragment_to_courseFragment)
+            } else {
+                Toast.makeText(activity, loginPresenter.getAuthMessage(), Toast.LENGTH_LONG).show()
+            }
+
+
+
         }
 
         enterRegBtn.setOnClickListener {
+            val email: String = emailRegText.text.toString()
+            val password: String = passRegText.text.toString()
+            val password2: String = pass2RegText.text.toString()
+            val name: String = name_reg_text.text.toString()
+            val user = User(name, email, password)
+            val a = loginPresenter.CheckContentRegistrationData(user)
+            val b = loginPresenter.CheckFillRegistrationData(user)
+
+            if (a && b && password == password2) {
+                loginPresenter.FireBaseRegistration(user)
+
+            } else {
+                if (!a) {
+                    Toast.makeText(activity, loginPresenter.ShowEmptyInputCaution(), Toast.LENGTH_LONG).show()
+                } else if (!b) {
+                    Toast.makeText(activity, loginPresenter.ShowInputCaution(), Toast.LENGTH_LONG).show()
+                }
+            }
+
+            if (loginPresenter.OnSuccess()) {
+                navController.navigate(R.id.action_loginFragment_to_courseFragment)
+            } else {
+                Toast.makeText(activity, loginPresenter.getAuthMessage(), Toast.LENGTH_LONG).show()
+            }
 
         }
 

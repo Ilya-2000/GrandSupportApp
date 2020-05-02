@@ -4,50 +4,59 @@ import android.util.Log
 import android.view.View
 import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.impact.grandsupportapp.R
 import com.impact.grandsupportapp.data.User
 import com.impact.grandsupportapp.ui.LoginFragment
 
 class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, LoginContract.View {
-    override fun OnSuccess(message: String) {
-        Log.d("auth", message)
+    override fun OnSuccess(): Boolean {
+        return true
     }
 
-    override fun OnFailure(message: String) {
-        Log.d("auth", message)
+    override fun OnFailure(): Boolean {
+        return false
     }
 
-    override fun FireBaseLogin(email: String, password: String) {
+    override fun getAuthMessage(): Int {
+        return R.string.auth_fail
+    }
+
+
+    override fun FireBaseLogin(user: User) {
         FirebaseAuth.getInstance()
-            .signInWithEmailAndPassword(email, password)
+            .signInWithEmailAndPassword(user.email, user.password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    OnSuccess(it.result.toString())
+                    OnSuccess()
 
                 }
             }
             .addOnFailureListener {
-                OnFailure(it.message.toString())
+                OnFailure()
+                getAuthMessage()
             }
     }
 
-    override fun FireBaseRegistration(email: String, password: String, name: String) {
+    override fun FireBaseRegistration(user: User) {
         FirebaseAuth.getInstance()
-            .createUserWithEmailAndPassword(email, password)
+            .createUserWithEmailAndPassword(user.email, user.password)
             .addOnCompleteListener {
-                WriteNewUser(name, email, password)
+                val userId = it.result?.user
+                WriteNewUser(userId!!, user)
+                OnSuccess()
             }
             .addOnFailureListener {
 
             }
     }
 
-    override fun WriteNewUser(name: String, email: String, password: String) {
-        val user = User(name, email, password)
+    override fun WriteNewUser(userId: FirebaseUser, user: User) {
+        val userMap = mapOf<String, Any>("userId" to userId, "user" to user)
         FirebaseFirestore.getInstance()
             .collection("users")
-            .add(user)
+            .add(userMap)
             .addOnCompleteListener {
                 Log.d("reg", it.result.toString())
             }
@@ -76,4 +85,21 @@ class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, L
     }
 
 
+
+    override fun CheckFillLoginData(user: User): Boolean {
+        return user.email.isNotEmpty() && user.password.isNotEmpty()
+    }
+
+
+    override fun CheckContentLoginData(user: User): Boolean {
+        return user.email.length > 4 && user.email.contains("@") && user.password.length > 4
+    }
+
+    override fun CheckFillRegistrationData(user: User): Boolean {
+       return (user.name.isNotBlank() && user.email.isNotBlank() && user.password.isNotBlank())
+    }
+
+    override fun CheckContentRegistrationData(user: User): Boolean {
+        return (user.name.length > 1 && user.email.length > 4 && user.password.length > 4 && user.email.contains("@"))
+    }
 }
