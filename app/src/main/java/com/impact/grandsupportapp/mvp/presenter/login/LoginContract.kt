@@ -1,7 +1,10 @@
 package com.impact.grandsupportapp.mvp.presenter.login
 
+import android.app.Activity
 import android.view.View
 import androidx.cardview.widget.CardView
+import androidx.navigation.NavController
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.impact.grandsupportapp.data.User
 
@@ -13,17 +16,21 @@ interface LoginContract {
     }
 
     interface Presenter {
-        fun FireBaseLogin(user: User)
-        fun FireBaseRegistration(user: User)
-        fun WriteNewUser(userId: FirebaseUser, user: User)
+        fun FireBaseLogin(user: User, activity: Activity, navController: NavController)
+        fun FireBaseRegistration(user: User, navController: NavController)
         fun CheckFillLoginData(user: User): Boolean
         fun CheckContentLoginData(user: User): Boolean
         fun CheckFillRegistrationData(user: User): Boolean
         fun CheckContentRegistrationData(user: User): Boolean
+        fun LoadLessonData(): Boolean
+        fun LoadScreen(navController: NavController, id: Int)
+
+
 
     }
 
     interface OnLoginListener {
+        fun getResultLogin(): Boolean
         fun OnSuccess(): Boolean
         fun OnFailure(): Boolean
         fun getAuthMessage(): Int

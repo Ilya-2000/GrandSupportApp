@@ -5,13 +5,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class User(
+data class Lesson(
     @PrimaryKey
-    var id: String,
+    val id: Int,
     val name: String,
-    val email: String,
-    val password: String,
-    @ColumnInfo(name = "current_level")
-    val currentLevel: Int
+    @ColumnInfo(name = "course_name")
+    val courseName: String,
+    val steps: Int
 
 )

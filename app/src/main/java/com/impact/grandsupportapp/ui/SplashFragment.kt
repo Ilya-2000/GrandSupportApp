@@ -8,14 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.impact.grandsupportapp.Global
 
 import com.impact.grandsupportapp.R
+import com.impact.grandsupportapp.mvp.presenter.login.LoginPresenter
 
 /**
  * A simple [Fragment] subclass.
  */
 class SplashFragment : Fragment() {
-
+    var global = Global()
+    var loginPresenter = LoginPresenter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,19 +26,21 @@ class SplashFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_splash, container, false)
         val navController = findNavController()
-        //splashWork(navController)
-        navController.navigate(R.id.action_splashFragment_to_loginFragment)
-
+        if (global.ret == 0) {
+            splashWork(navController)
+        } else {
+            loginPresenter.LoadLessonData()
+        }
         return root
     }
-
-    /* private fun splashWork(navController: NavController) {
+     private fun splashWork(navController: NavController) {
         val handler = Handler()
         handler.postDelayed(Runnable {
+            global.ret = 1
             navController.navigate(R.id.action_splashFragment_to_loginFragment)
 
 
         }, 2000)
-    }*/
+    }
 
 }

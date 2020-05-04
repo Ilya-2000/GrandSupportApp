@@ -1,6 +1,8 @@
 package com.impact.grandsupportapp.ui
 
+import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +11,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 
 import com.impact.grandsupportapp.R
 import com.impact.grandsupportapp.data.User
 import com.impact.grandsupportapp.mvp.model.UserModel
 import com.impact.grandsupportapp.mvp.presenter.login.LoginContract
 import com.impact.grandsupportapp.mvp.presenter.login.LoginPresenter
-import kotlinx.android.synthetic.main.registration_card_layout.*
 import kotlin.math.log
 
 /**
@@ -30,6 +33,7 @@ class LoginFragment : Fragment(), LoginContract {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_login, container, false)
+
         val emailRegText = root.findViewById<EditText>(R.id.email_reg_text)
         val userNameRegText = root.findViewById<EditText>(R.id.name_reg_text)
         val passRegText = root.findViewById<EditText>(R.id.password_reg_text)
@@ -43,48 +47,40 @@ class LoginFragment : Fragment(), LoginContract {
 
         val tabLoginBtn = root.findViewById<Button>(R.id.tab_login_btn)
         val tabRegBtn = root.findViewById<Button>(R.id.tab_reg_btn)
-        val loginCard = root.findViewById<CardView>(R.id.login_lay)
-        val regCard = root.findViewById<CardView>(R.id.reg_lay)
+        val loginCard = root.findViewById<CardView>(R.id.login_card_layout)
+        val regCard = root.findViewById<CardView>(R.id.registration_card_layout)
         ///
         val navController = findNavController()
 
         enterLoginBtn.setOnClickListener {
+            //var bb: Int? = null
             val email: String = emailLoginText.text.toString()
-            val password:String = passwordLoginText.text.toString()
-            val user = User("", email, password)
+            val password: String = passwordLoginText.text.toString()
+            val user = User("","", email, password, 0)
             val a = loginPresenter.CheckContentLoginData(user)
             val b = loginPresenter.CheckFillLoginData(user)
             if (a && b) {
-                loginPresenter.FireBaseLogin(user)
-            } else {
-                if (!a) {
-                    Toast.makeText(activity, loginPresenter.ShowEmptyInputCaution(), Toast.LENGTH_LONG).show()
-                } else if (!b) {
-                    Toast.makeText(activity, loginPresenter.ShowInputCaution(), Toast.LENGTH_LONG).show()
-                }
+                loginPresenter.FireBaseLogin(user, this.requireActivity(), navController)
+                } else {
+                Toast.makeText(activity,loginPresenter.ShowEmptyInputCaution(), Toast.LENGTH_LONG).show()
+                //bb = 0
             }
-            if (loginPresenter.OnSuccess()) {
-                navController.navigate(R.id.action_loginFragment_to_courseFragment)
-            } else {
-                Toast.makeText(activity, loginPresenter.getAuthMessage(), Toast.LENGTH_LONG).show()
-            }
-
-
 
         }
 
-        enterRegBtn.setOnClickListener {
+
+         enterRegBtn.setOnClickListener {
+
             val email: String = emailRegText.text.toString()
             val password: String = passRegText.text.toString()
             val password2: String = pass2RegText.text.toString()
             val name: String = userNameRegText.text.toString()
-            val user = User(name, email, password)
+            val user = User("", name, email, password, 1)
             val a = loginPresenter.CheckContentRegistrationData(user)
             val b = loginPresenter.CheckFillRegistrationData(user)
 
             if (a && b && password == password2) {
-                loginPresenter.FireBaseRegistration(user)
-
+                loginPresenter.FireBaseRegistration(user, navController)
             } else {
                 if (!a) {
                     Toast.makeText(activity, loginPresenter.ShowEmptyInputCaution(), Toast.LENGTH_LONG).show()
@@ -92,23 +88,21 @@ class LoginFragment : Fragment(), LoginContract {
                     Toast.makeText(activity, loginPresenter.ShowInputCaution(), Toast.LENGTH_LONG).show()
                 }
             }
-
-            if (loginPresenter.OnSuccess()) {
                 navController.navigate(R.id.action_loginFragment_to_courseFragment)
-            } else {
+
                 Toast.makeText(activity, loginPresenter.getAuthMessage(), Toast.LENGTH_LONG).show()
-            }
+
 
         }
 
-        tabLoginBtn.setOnClickListener {
+         tabLoginBtn.setOnClickListener {
             loginPresenter.chooseView(R.id.tab_login_btn, loginCard, regCard)
         }
 
         tabRegBtn.setOnClickListener {
-            loginPresenter.chooseView(R.id.tab_login_btn, loginCard, regCard)
+            loginPresenter.chooseView(R.id.tab_reg_btn, loginCard, regCard)
         }
         return root
-    }
 
+    }
 }

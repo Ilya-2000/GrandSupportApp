@@ -19,14 +19,220 @@
             android:layout_marginTop="25dp"
             />
 
-        <include
-            android:id="@+id/login_lay"
-            layout="@layout/login_card_layout"
-            android:visibility="visible" />
-        <include
-            android:id="@+id/reg_lay"
-            layout="@layout/registration_card_layout"
-            android:visibility="gone" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/login_card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:textColor="#000"
+                android:text="Вход" />
+            <EditText
+                android:id="@+id/email_login_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:background="@drawable/shape_edit_text"
+                android:hint="Email"
+                android:textSize="20sp"
+
+                android:layout_margin="10dp" />
+            <TextView
+                android:id="@+id/email_error_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email введен неправильно"
+                android:textSize="10sp"
+                android:textColor="@color/colorError"
+                android:layout_marginStart="10dp"
+                android:visibility="gone"/>
+            <EditText
+                android:id="@+id/password_login_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/shape_edit_text"
+                android:hint="Пароль"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/pass_error_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Пароль введен неправильно"
+                android:textSize="10sp"
+                android:textColor="@color/colorError"
+                android:layout_marginStart="10dp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/enter_login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Войти"
+                android:background="@drawable/login_button_sheet"
+                android:textColor="#fff"
+                android:layout_margin="10dp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:orientation="vertical">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/forget_pass_btn"
+                    android:background="#fff"
+                    android:textAllCaps="false"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:text="Забыли пароль?" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/registration_card_layout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:textColor="#000"
+                    android:text="Регистрация" />
+                <EditText
+                    android:id="@+id/name_reg_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:hint="Имя"
+                    android:textSize="20sp"
+                    android:background="@drawable/shape_edit_text"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/name_error_reg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Имя введено неправильно"
+                    android:textSize="10sp"
+                    android:textColor="@color/colorError"
+                    android:layout_marginStart="10dp"
+                    android:visibility="gone"/>
+
+                <EditText
+                    android:id="@+id/email_reg_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:padding="10dp"
+                    android:hint="Email"
+                    android:textSize="20sp"
+                    android:background="@drawable/shape_edit_text"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/email_error_reg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email введен неправильно"
+                    android:textSize="10sp"
+                    android:textColor="@color/colorError"
+                    android:layout_marginStart="10dp"
+                    android:visibility="gone"/>
+                <EditText
+                    android:id="@+id/password_reg_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_edit_text"
+                    android:hint="Пароль"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/pass_error_reg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Маленький пароль"
+                    android:textSize="10sp"
+                    android:textColor="@color/colorError"
+                    android:layout_marginStart="10dp"
+                    android:visibility="gone"/>
+                <EditText
+                    android:id="@+id/password2_reg_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_edit_text"
+                    android:hint="Повторите пароль"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/pass2_error_reg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Неверный пароль"
+                    android:textSize="10sp"
+                    android:textColor="@color/colorError"
+                    android:layout_marginStart="10dp"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/enter_reg_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Зарегистрироваться"
+                    android:background="@drawable/login_button_sheet"
+                    android:textColor="#fff"
+                    android:layout_margin="10dp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:orientation="vertical"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
