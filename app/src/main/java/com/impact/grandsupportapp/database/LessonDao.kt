@@ -3,6 +3,7 @@ package com.impact.grandsupportapp.database
 import android.database.Observable
 import androidx.room.*
 import com.impact.grandsupportapp.data.Lesson
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 
@@ -15,7 +16,7 @@ public interface LessonDao {
     fun getById(id: Int): Single<Lesson>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(lesson: Lesson): Flowable<Lesson>
+    fun insert(lesson: Lesson): Completable
 
     @Update
     fun update(lesson: Lesson)
