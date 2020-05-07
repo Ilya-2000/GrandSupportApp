@@ -26,8 +26,14 @@ class UserModel {
             }
     }
 
-    fun clearUserData(user: User) {
+    fun ClearUserData(user: User) {
 
+    }
+
+    fun LoadLesson() {
+        /*FirebaseFirestore.getInstance()
+            .collection("courses")
+            .get()*/
     }
 
 

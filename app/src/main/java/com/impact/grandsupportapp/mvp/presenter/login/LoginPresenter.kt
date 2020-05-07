@@ -11,6 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.impact.grandsupportapp.R
 import com.impact.grandsupportapp.data.User
 import com.impact.grandsupportapp.mvp.model.UserModel
+import com.impact.grandsupportapp.mvp.presenter.lesson.LessonPresenter
 import com.impact.grandsupportapp.ui.LoginFragment
 import com.impact.grandsupportapp.ui.MainActivity
 
@@ -124,6 +125,7 @@ class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, L
     }
 
     override fun LoadLessonData(): Boolean {
+
         return false
     }
 
