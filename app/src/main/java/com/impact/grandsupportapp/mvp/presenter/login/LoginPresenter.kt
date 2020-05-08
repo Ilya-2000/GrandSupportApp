@@ -57,7 +57,7 @@ class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, L
                 val userId = it.user
                 user.id = userId.toString()
                 model.WriteNewUser(user)
-                LoadScreen(navController, R.id.action_loginFragment_to_splashFragment)
+                LoadScreen(navController, R.id.action_loginFragment_to_courseFragment)
             }
             .addOnFailureListener {
                 getAuthMessage()
@@ -79,6 +79,7 @@ class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, L
         if (btnSelected == (R.id.tab_login_btn)) {
             loginCard.visibility = View.VISIBLE
             regCard.visibility = View.GONE
+
         } else {
             regCard.visibility = View.VISIBLE
             loginCard.visibility = View.GONE
@@ -124,9 +125,8 @@ class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, L
         return (user.name.length > 1 && user.email.length > 4 && user.password.length > 4 && user.email.contains("@"))
     }
 
-    override fun LoadLessonData(): Boolean {
-
-        return false
+    override fun LoadLessonData() {
+        model.LoadLesson()
     }
 
     override fun LoadScreen(navController: NavController, id: Int) {

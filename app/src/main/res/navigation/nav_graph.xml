@@ -13,10 +13,6 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <argument
-            android:name="ret"
-            app:argType="boolean"
-            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/courseFragment"
@@ -35,13 +31,6 @@
         <action
             android:id="@+id/action_loginFragment_to_courseFragment"
             app:destination="@id/courseFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_splashFragment"
-            app:destination="@id/splashFragment" />
-        <argument
-            android:name="ret"
-            app:argType="boolean"
-            android:defaultValue="true" />
     </fragment>
     <fragment
         android:id="@+id/lessonListFragment"

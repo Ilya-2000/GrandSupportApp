@@ -12,5 +12,7 @@ data class Lesson(
     @ColumnInfo(name = "course_name")
     val courseName: String,
     val steps: Int
+    //var textList: MutableList<String>,
+    //var imageList: MutableList<String>
 
 )

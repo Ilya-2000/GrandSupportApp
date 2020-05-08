@@ -57,7 +57,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
 
     //moxy
-    
+
 
     //firebase
 

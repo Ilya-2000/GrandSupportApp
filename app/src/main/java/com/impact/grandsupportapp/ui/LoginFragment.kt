@@ -1,6 +1,7 @@
 package com.impact.grandsupportapp.ui
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -97,10 +98,14 @@ class LoginFragment : Fragment(), LoginContract {
 
          tabLoginBtn.setOnClickListener {
             loginPresenter.chooseView(R.id.tab_login_btn, loginCard, regCard)
+             tabLoginBtn.setTextColor(resources.getColor(R.color.colorAccent))
+             tabRegBtn.setTextColor(Color.WHITE)
         }
 
         tabRegBtn.setOnClickListener {
             loginPresenter.chooseView(R.id.tab_reg_btn, loginCard, regCard)
+            tabRegBtn.setTextColor(resources.getColor(R.color.colorAccent))
+            tabLoginBtn.setTextColor(Color.WHITE)
         }
         return root
 

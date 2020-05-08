@@ -22,7 +22,7 @@ interface LoginContract {
         fun CheckContentLoginData(user: User): Boolean
         fun CheckFillRegistrationData(user: User): Boolean
         fun CheckContentRegistrationData(user: User): Boolean
-        fun LoadLessonData(): Boolean
+        fun LoadLessonData()
         fun LoadScreen(navController: NavController, id: Int)
 
 

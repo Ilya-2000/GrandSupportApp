@@ -8,5 +8,6 @@ data class Course(
     @PrimaryKey
     val number: Int,
     val level: Int,
-    val lessonsId: List<Int>
+    val lessonsId: List<Int>,
+    var lessonsList: MutableList<HashMap<String, Any>>
 )

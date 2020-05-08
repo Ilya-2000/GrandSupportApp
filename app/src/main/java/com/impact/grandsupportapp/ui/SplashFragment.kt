@@ -1,5 +1,7 @@
 package com.impact.grandsupportapp.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -17,7 +19,6 @@ import com.impact.grandsupportapp.mvp.presenter.login.LoginPresenter
  * A simple [Fragment] subclass.
  */
 class SplashFragment : Fragment() {
-    var global = Global()
     var loginPresenter = LoginPresenter()
 
     override fun onCreateView(
@@ -25,22 +26,31 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_splash, container, false)
+
         val navController = findNavController()
-        if (global.ret == 0) {
-            splashWork(navController)
-        } else {
-            loginPresenter.LoadLessonData()
-        }
-        return root
-    }
-     private fun splashWork(navController: NavController) {
         val handler = Handler()
         handler.postDelayed(Runnable {
-            global.ret = 1
-            navController.navigate(R.id.action_splashFragment_to_loginFragment)
+            splashWork(navController)
+        }, 200)
 
+        return root
+    }
+      fun splashWork(navController: NavController) {
+          var shared = this.requireActivity().getSharedPreferences("fstart", Context.MODE_PRIVATE)
+          var isVisited: Boolean = shared.getBoolean("visited", false)
+          if (!isVisited) {
+              var editor = shared.edit()
+              editor.putBoolean("visited", true)
+              editor.apply()
+              loginPresenter.LoadLessonData()
+              val handler = Handler().postDelayed(Runnable {
+                  navController.navigate(R.id.action_splashFragment_to_loginFragment)
+              }, 5000)
 
-        }, 2000)
+          } else {
+              navController.navigate(R.id.action_splashFragment_to_loginFragment)
+          }
+
     }
 
 }
