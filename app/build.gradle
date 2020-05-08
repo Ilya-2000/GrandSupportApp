@@ -52,6 +52,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation "androidx.viewpager2:viewpager2:1.1.0-alpha01"
+
     //navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
@@ -70,6 +72,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
     kapt "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
+    implementation "android.arch.lifecycle:extensions:1.1.1"
 
     // Kotlin components
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

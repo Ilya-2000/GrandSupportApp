@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 import com.impact.grandsupportapp.R
 
@@ -17,8 +18,9 @@ class LessonListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lesson_list, container, false)
+        val root = inflater.inflate(R.layout.fragment_lesson_list, container, false)
+        val recyclerView = root.findViewById<RecyclerView>(R.id.lesson_list_rv)
+        return root
     }
 
 }

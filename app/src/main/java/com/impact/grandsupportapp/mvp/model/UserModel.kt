@@ -1,16 +1,15 @@
 package com.impact.grandsupportapp.mvp.model
 
 import android.util.Log
-import androidx.navigation.NavController
 import com.google.firebase.firestore.FirebaseFirestore
-import com.impact.grandsupportapp.R
+import com.impact.grandsupportapp.data.Lesson
 import com.impact.grandsupportapp.data.User
-import io.reactivex.Observable
 
 
 class UserModel {
 
-     fun WriteNewUser(user: User) {
+    //val lessonPresenter: LessonPresenter by
+    fun WriteNewUser(user: User) {
         FirebaseFirestore.getInstance()
             .collection("users")
             .add(user)
@@ -33,6 +32,8 @@ class UserModel {
 
      fun LoadLesson() {
         val courseIdList = mutableListOf<String>("course_1", "course_2")
+
+
         for (i in 0 until courseIdList.size) {
             FirebaseFirestore.getInstance()
                 .collection("courses")
@@ -40,6 +41,8 @@ class UserModel {
                 .get()
                 .addOnSuccessListener {
                     Log.d("LoadedData", it.data.toString())
+                    var lesson = Lesson(it["id"] as Int, it["name"].toString(),it["courseName"].toString(), it["steps"] as Int)
+
                 }
                 .addOnFailureListener {
                     Log.d("LoadedData", it.message.toString())

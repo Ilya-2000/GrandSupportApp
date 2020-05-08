@@ -1,13 +1,16 @@
 package com.impact.grandsupportapp.data
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 @Entity
 data class Course(
     val name: String,
     @PrimaryKey
-    val number: Int,
+    val id: Int,
     val level: Int,
+    @ColumnInfo(name = "lessons_id")
     val lessonsId: List<Int>,
+    @ColumnInfo(name = "lessons_list")
     var lessonsList: MutableList<HashMap<String, Any>>
 )

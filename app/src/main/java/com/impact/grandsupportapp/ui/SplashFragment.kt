@@ -1,7 +1,6 @@
 package com.impact.grandsupportapp.ui
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -10,9 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.impact.grandsupportapp.Global
 
 import com.impact.grandsupportapp.R
+import com.impact.grandsupportapp.mvp.presenter.lesson.LessonPresenter
 import com.impact.grandsupportapp.mvp.presenter.login.LoginPresenter
 
 /**
