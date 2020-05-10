@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Course(
     val name: String,
     @PrimaryKey
-    val id: Int,
+    var id: Int,
     val level: Int,
     @ColumnInfo(name = "lessons_id")
     val lessonsId: List<Int>,

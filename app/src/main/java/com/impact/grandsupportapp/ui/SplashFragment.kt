@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.impact.grandsupportapp.R
 import com.impact.grandsupportapp.mvp.presenter.lesson.LessonPresenter
 import com.impact.grandsupportapp.mvp.presenter.login.LoginPresenter
+import kotlin.coroutines.CoroutineContext
 
 /**
  * A simple [Fragment] subclass.
@@ -35,13 +36,15 @@ class SplashFragment : Fragment() {
         return root
     }
       fun splashWork(navController: NavController) {
+          val activity = MainActivity()
+
           var shared = this.requireActivity().getSharedPreferences("fstart", Context.MODE_PRIVATE)
           var isVisited: Boolean = shared.getBoolean("visited", false)
           if (!isVisited) {
               var editor = shared.edit()
               editor.putBoolean("visited", true)
               editor.apply()
-              loginPresenter.LoadLessonData()
+              loginPresenter.LoadLessonData(activity)
               val handler = Handler().postDelayed(Runnable {
                   navController.navigate(R.id.action_splashFragment_to_loginFragment)
               }, 5000)

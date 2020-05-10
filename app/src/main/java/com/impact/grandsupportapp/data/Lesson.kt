@@ -11,8 +11,10 @@ data class Lesson(
     val name: String,
     @ColumnInfo(name = "course_name")
     val courseName: String,
-    val steps: Int
-    //var textList: MutableList<String>,
-    //var imageList: MutableList<String>
+    val steps: Int,
+    @ColumnInfo(name = "text_list")
+    var textList: MutableList<String>,
+    @ColumnInfo(name = "image_list")
+    var imageList: MutableList<String>
 
 )

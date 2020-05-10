@@ -14,9 +14,10 @@ import com.impact.grandsupportapp.mvp.model.UserModel
 import com.impact.grandsupportapp.mvp.presenter.lesson.LessonPresenter
 import com.impact.grandsupportapp.ui.LoginFragment
 import com.impact.grandsupportapp.ui.MainActivity
+import kotlin.coroutines.CoroutineContext
 
 class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, LoginContract.View {
-    val model = UserModel()
+    val model: UserModel = UserModel()
     override fun getResultLogin(): Boolean {
         return true
     }
@@ -125,8 +126,8 @@ class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, L
         return (user.name.length > 1 && user.email.length > 4 && user.password.length > 4 && user.email.contains("@"))
     }
 
-    override fun LoadLessonData() {
-        model.LoadLesson()
+    override fun LoadLessonData(activity: MainActivity) {
+        model.LoadLesson(activity)
     }
 
     override fun LoadScreen(navController: NavController, id: Int) {

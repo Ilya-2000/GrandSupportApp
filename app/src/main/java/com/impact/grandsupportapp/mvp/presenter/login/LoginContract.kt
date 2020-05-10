@@ -7,6 +7,8 @@ import androidx.navigation.NavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.impact.grandsupportapp.data.User
+import com.impact.grandsupportapp.ui.MainActivity
+import kotlin.coroutines.CoroutineContext
 
 interface LoginContract {
     interface View {
@@ -22,7 +24,7 @@ interface LoginContract {
         fun CheckContentLoginData(user: User): Boolean
         fun CheckFillRegistrationData(user: User): Boolean
         fun CheckContentRegistrationData(user: User): Boolean
-        fun LoadLessonData()
+        fun LoadLessonData(activity: MainActivity)
         fun LoadScreen(navController: NavController, id: Int)
 
 

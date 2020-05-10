@@ -8,17 +8,18 @@ import com.impact.grandsupportapp.data.Lesson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LessonViewModel (application: Application): AndroidViewModel(application) {
+open class LessonViewModel (application: Application): AndroidViewModel(application) {
     private val repository: LessonRepository
-    val allLessons: LiveData<List<Lesson>>
+
 
     init {
-        val lessonDao = LessonDB.getDatabase(application).lessonDao()
+        val lessonDao = LessonDB.getDatabase(application, viewModelScope).lessonDao()
         repository = LessonRepository(lessonDao)
-        allLessons = repository.getAll
+
     }
 
-    fun insert(lesson: Lesson) = viewModelScope.launch(Dispatchers.IO) {
+    fun populateDatabase(lesson: Lesson) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(lesson)
+
     }
 }
