@@ -1,6 +1,7 @@
 package com.impact.grandsupportapp.mvp.presenter.login
 
 import android.app.Activity
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.cardview.widget.CardView
@@ -58,7 +59,10 @@ class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, L
                 val userId = it.user
                 user.id = userId.toString()
                 model.WriteNewUser(user)
-                LoadScreen(navController, R.id.action_loginFragment_to_courseFragment)
+                var handler = Handler().postDelayed(Runnable {
+                    LoadScreen(navController, R.id.action_loginFragment_to_courseFragment)
+                }, 1000)
+
             }
             .addOnFailureListener {
                 getAuthMessage()

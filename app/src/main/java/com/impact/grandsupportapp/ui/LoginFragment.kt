@@ -89,9 +89,9 @@ class LoginFragment : Fragment(), LoginContract {
                     Toast.makeText(activity, loginPresenter.ShowInputCaution(), Toast.LENGTH_LONG).show()
                 }
             }
-                navController.navigate(R.id.action_loginFragment_to_courseFragment)
+                //navController.navigate(R.id.action_loginFragment_to_courseFragment)
 
-                Toast.makeText(activity, loginPresenter.getAuthMessage(), Toast.LENGTH_LONG).show()
+
 
 
         }

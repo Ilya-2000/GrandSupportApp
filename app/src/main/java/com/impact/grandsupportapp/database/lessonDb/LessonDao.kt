@@ -17,7 +17,7 @@ public interface LessonDao {
     fun getById(id: Int): Single<Lesson>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(lesson: Lesson): Completable
+    suspend fun insert(lesson: Lesson)
 
     @Update
     suspend fun update(lesson: Lesson)
