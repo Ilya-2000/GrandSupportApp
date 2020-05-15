@@ -15,7 +15,7 @@ import com.impact.grandsupportapp.mvp.model.UserModel
 import com.impact.grandsupportapp.mvp.presenter.lesson.LessonPresenter
 import com.impact.grandsupportapp.ui.LoginFragment
 import com.impact.grandsupportapp.ui.MainActivity
-import kotlin.coroutines.CoroutineContext
+
 
 class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, LoginContract.View {
     val model: UserModel = UserModel()
@@ -131,7 +131,7 @@ class LoginPresenter : LoginContract.Presenter, LoginContract.OnLoginListener, L
     }
 
     override fun LoadLessonData(activity: MainActivity) {
-        model.LoadLesson(activity)
+        model.loadLesson(activity)
     }
 
     override fun LoadScreen(navController: NavController, id: Int) {

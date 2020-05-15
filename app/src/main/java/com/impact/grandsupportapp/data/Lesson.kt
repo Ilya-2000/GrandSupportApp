@@ -17,9 +17,9 @@ data class Lesson(
     val steps: Int,
     @ColumnInfo(name = "text_list")
     @TypeConverters(LessonConverter::class)
-    var textList: MutableList<String>,
+    var textList: MutableList<String>?,
     @ColumnInfo(name = "image_list")
     @TypeConverters(ImgConverter::class)
-    var imageList: MutableList<String>
+    var imageList: MutableList<String>?
 
 )

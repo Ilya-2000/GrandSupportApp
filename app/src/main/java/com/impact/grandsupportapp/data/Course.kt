@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey
 data class Course(
     val name: String,
     @PrimaryKey
-    var id: Int,
-    val level: Int,
+    var id: Long,
+    val level: Long,
     @ColumnInfo(name = "lessons_id")
-    val lessonsId: List<Int>,
+    val lessonsId: MutableList<Long>?,
     @ColumnInfo(name = "lessons_list")
     var lessonsList: MutableList<HashMap<String, Any>>
 )
