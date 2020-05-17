@@ -12,6 +12,8 @@ data class User(
     val email: String,
     val password: String,
     @ColumnInfo(name = "current_level")
-    val currentLevel: Int
+    val currentLevel: Int,
+    @ColumnInfo(name = "current_stage")
+    val currentStage: Int
 
 )

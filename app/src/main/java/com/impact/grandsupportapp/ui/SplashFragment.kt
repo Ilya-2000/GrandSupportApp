@@ -1,6 +1,7 @@
 package com.impact.grandsupportapp.ui
 
 import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -11,27 +12,21 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 
 import com.impact.grandsupportapp.R
-import com.impact.grandsupportapp.mvp.presenter.lesson.LessonPresenter
-import com.impact.grandsupportapp.mvp.presenter.login.LoginPresenter
 import kotlin.coroutines.CoroutineContext
 
 /**
  * A simple [Fragment] subclass.
  */
 class SplashFragment : Fragment() {
-    var loginPresenter = LoginPresenter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_splash, container, false)
-
         val navController = findNavController()
-        val handler = Handler()
-        handler.postDelayed(Runnable {
             splashWork(navController)
-        }, 200)
+
 
         return root
     }
@@ -44,15 +39,18 @@ class SplashFragment : Fragment() {
               var editor = shared.edit()
               editor.putBoolean("visited", true)
               editor.apply()
-              loginPresenter.LoadLessonData(activity)
               val handler = Handler().postDelayed(Runnable {
                   navController.navigate(R.id.action_splashFragment_to_loginFragment)
-              }, 5000)
+              }, 2000)
 
           } else {
               navController.navigate(R.id.action_splashFragment_to_loginFragment)
           }
 
     }
+
+    /*fun isConnection(context: Context): Boolean {
+        var connectivityManager: ConnectivityManager =
+    }*/
 
 }
