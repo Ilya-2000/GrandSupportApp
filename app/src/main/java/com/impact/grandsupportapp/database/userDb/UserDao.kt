@@ -9,7 +9,7 @@ interface UserDao {
     @Query("SELECT * from User WHERE id == :uid")
     fun getUserById(uid: String): User
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)
 
     @Update

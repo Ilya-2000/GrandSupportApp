@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,9 +14,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 import com.impact.grandsupportapp.R
 import com.impact.grandsupportapp.data.User
@@ -36,6 +39,7 @@ class LoginFragment : Fragment() {
     private var dataBase: UserDb? = null
     private var userDao: UserDao? = null
     private var user: User? = null
+    private var userList: MutableList<User>? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -71,9 +75,56 @@ class LoginFragment : Fragment() {
                     firebaseAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            var currentUser = firebaseAuth.currentUser
+                            val currentUser = firebaseAuth.currentUser
                             Log.d("CurrentUser", currentUser!!.uid)
-                            getUser(currentUser.uid)
+                            //var user = getUser(currentUser.uid.toString(), this.requireContext())
+                            var user1: User
+                            Observable.fromCallable {
+                                dataBase = UserDb.getUserDb(this.requireContext())
+                                userDao = dataBase?.userDao()
+                                user1 = userDao?.getUserById(currentUser.uid)!!
+                                var user2 = User(user1.id, user1.name, user1.email, user1.password, user1.currentLevel, user1.currentStage)
+                                if (user1 != null) {
+                                    Log.d("UserFromRoom", user1.email + " " + user1.id)
+                                    user = User(user2.id, user2.name, user2.email, user2.password, user2.currentLevel, user2.currentStage)
+
+                                } else {
+                                    val firebaseFirestore = FirebaseFirestore.getInstance()
+                                        .collection("users")
+                                        .document(email)
+                                        .get()
+                                        .addOnCompleteListener {
+                                            if (it.isSuccessful) {
+                                                Log.d("LoadFromFirebase", it.result.toString())
+                                                it.addOnSuccessListener {
+                                                    user = User(it["id"].toString(), it["name"].toString(), it["email"].toString(),
+                                                        it["password"].toString(), it["level"] as Int, it["stage"] as Int)
+                                                }
+                                            } else {
+                                                Log.d("LoadFromFirebase", it.exception.toString())
+                                            }
+                                        }
+                                    Log.d("UserFromRoom", "Null")
+                                }
+                                //Log.d("UserFromRoom", user?.email + " " + user?.id)
+                            }.doOnNext {
+                                Log.d("MessageInsert", it.toString())
+                            }.subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe()
+
+                            val handler = Handler().postDelayed(Runnable {
+                                val bundle = Bundle()
+                                bundle.putString("id",user?.id)
+                                bundle.putString("name",user?.name)
+                                bundle.putString("password", user?.password)
+                                bundle.putString("email", user?.email)
+                                bundle.putInt("level", user?.currentLevel!!)
+                                bundle.putInt("stage", user?.currentStage!!)
+                                Log.d("UserIsReady", user?.name.toString())
+                                navController.navigate(R.id.action_loginFragment_to_courseFragment, bundle)
+                            }, 1000)
+
                             //передать user в course и перейти туда
 
                         }
@@ -104,14 +155,14 @@ class LoginFragment : Fragment() {
                      }
                      .addOnSuccessListener {
                          Log.d("ResultRegSuccess", it.user!!.uid)
-                         var user = User(it.user!!.uid, name, email, password, 0, 1)
-                         writeNewUser(user)
+                         var user = User(it.user!!.uid.toString(), name, email, password, 1, 0)
+                         writeNewUser(user, this.requireContext())
                          loginCard.visibility = View.VISIBLE
                          regCard.visibility = View.GONE
                          tabLoginBtn.setTextColor(resources.getColor(R.color.colorAccent))
                          tabRegBtn.setTextColor(Color.WHITE)
 
-                         navController.navigate(R.id.action_loginFragment_to_courseFragment)
+                         //navController.navigate(R.id.action_loginFragment_to_courseFragment)
 
                      }
                      .addOnFailureListener {
@@ -142,29 +193,64 @@ class LoginFragment : Fragment() {
 
     }
 
-    fun getUser(uid: String): User? {
-        Observable.fromCallable({
-            dataBase = UserDb.getUserDb(requireContext())
+    private fun getUser(uid: String, context: Context, email: String): User? {
+        var user1: User
+
+
+        Observable.fromCallable {
+            dataBase = UserDb.getUserDb(context)
             userDao = dataBase?.userDao()
-            user = userDao?.getUserById(uid)
-        })
+            user1 = userDao?.getUserById(uid)!!
+            var user2 = User(user1.id, user1.name, user1.email, user1.password, user1.currentLevel, user1.currentStage)
+            //user1.id = ""
+            if (user1.id.isNotEmpty()) {
+                Log.d("UserFromRoom", user1.email + " " + user1.id)
+                user = User(user2.id, user2.name, user2.email, user2.password, user2.currentLevel, user2.currentStage)
+            } else {
+                Log.d("UserFromRoom", "Null")
+
+
+            }
+            //Log.d("UserFromRoom", user?.email + " " + user?.id)
+        }.doOnNext {
+                Log.d("MessageInsert", it.toString())
+            }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+
         return user
     }
 
-   private fun writeNewUser(user: User) {
-        Observable.fromCallable({
-            dataBase = UserDb.getUserDb(requireContext())
+   private fun writeNewUser(user: User, context: Context) {
+        Observable.fromCallable {
+            dataBase = UserDb.getUserDb(context)
             userDao = dataBase?.userDao()
             userDao?.insert(user)
             var id = user.id
             var user2: User
             user2 = userDao?.getUserById(id)!!
             Log.d("UserFromRoom", user2.id + user2.email)
-        }).doOnNext({
+        }.doOnNext {
             Log.d("MessageInsert", it.toString())
-        }).subscribeOn(Schedulers.io())
+        }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe()
-
+        var userMap = hashMapOf<String, Any>(
+            "id" to user.id,
+            "name" to user.name,
+            "email" to user.email,
+            "password" to user.password,
+            "level" to user.currentLevel,
+            "stage" to user.currentStage)
+        val fs = FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(user.email)
+            .set(userMap)
+            .addOnSuccessListener {
+                Log.d("WriteInFirebase", "Success")
+            }
+            .addOnFailureListener {
+                Log.d("WriteInFirebase", it.message.toString())
+            }
     }
 }

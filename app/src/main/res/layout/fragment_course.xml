@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.CourseFragment">
+    tools:context=".ui.CourseFragment"
+    android:background="#fff">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -26,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 app:cardBackgroundColor="#fff"
+
                 app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +40,7 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image_course_1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
@@ -79,6 +82,7 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image_course_2"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
@@ -120,6 +124,7 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image_course_3"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
@@ -165,8 +170,9 @@
                         android:orientation="vertical">
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:id="@+id/image_course_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="117dp"
                             android:layout_gravity="center_horizontal"
                             android:src="@drawable/smartphone_custom_gray_64" />
 
@@ -207,6 +213,7 @@
                         android:orientation="vertical">
 
                         <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/image_course_5"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal"
@@ -250,6 +257,7 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image_course_6"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
@@ -295,6 +303,7 @@
                         android:orientation="vertical">
 
                         <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/image_course_7"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal"
@@ -336,6 +345,7 @@
                         android:orientation="vertical">
 
                         <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/image_course_8"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal"
@@ -378,6 +388,7 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image_course_9"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
@@ -407,52 +418,8 @@
                 >
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/course_item_8a"
+                    android:id="@+id/course_item_8"
                     android:layout_margin="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    app:cardElevation="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center_horizontal"
-                            android:src="@drawable/smartphone_custom_gray_64" />
-
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="Настройки"
-                            android:textAlignment="center"
-                            android:textSize="14sp" />
-
-                        <ProgressBar
-                            android:id="@+id/progress_course_8a"
-                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:max="100" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/course_item_8b"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="40dp"
-                    android:layout_marginTop="120dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -468,6 +435,7 @@
                         android:orientation="vertical">
 
                         <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/image_course_10"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal"
@@ -477,53 +445,12 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:text="Память устройства"
+                            android:text="Настройки"
                             android:textAlignment="center"
                             android:textSize="14sp" />
 
                         <ProgressBar
-                            android:id="@+id/progress_course_8b"
-                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:max="100" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/course_item_8c"
-                    android:layout_margin="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    app:cardElevation="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center_horizontal"
-                            android:src="@drawable/smartphone_custom_gray_64" />
-
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="Проводник"
-                            android:textAlignment="center"
-                            android:textSize="14sp" />
-
-                        <ProgressBar
-                            android:id="@+id/progress_course_8c"
+                            android:id="@+id/progress_course_8a"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
