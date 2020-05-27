@@ -1,13 +1,16 @@
 package com.impact.grandsupportapp.data
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.impact.grandsupportapp.database.lessonDb.ImgConverter
 import com.impact.grandsupportapp.database.lessonDb.LessonConverter
+import kotlinx.android.parcel.Parcelize
 
 @Entity
+@Parcelize
 data class Lesson(
     @PrimaryKey
     val id: Int,
@@ -22,4 +25,4 @@ data class Lesson(
     @TypeConverters(ImgConverter::class)
     var imageList: MutableList<String>?
 
-)
+): Parcelable

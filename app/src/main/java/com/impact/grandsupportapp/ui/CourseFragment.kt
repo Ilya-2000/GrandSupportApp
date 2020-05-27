@@ -1,21 +1,31 @@
 package com.impact.grandsupportapp.ui
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Parcelable
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.annotation.UiThread
 import androidx.cardview.widget.CardView
+import androidx.core.os.bundleOf
+import androidx.core.widget.NestedScrollView
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 import com.impact.grandsupportapp.R
-import com.impact.grandsupportapp.data.CourseButton
-import com.impact.grandsupportapp.data.User
+import com.impact.grandsupportapp.data.*
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.coroutines.*
+import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -24,6 +34,11 @@ class CourseFragment : Fragment() {
     private val courseBtnList: MutableList<CourseButton>? = null
     private val colorImgList = mutableListOf<Int>(R.drawable.smartphone_custom64)
     private val unColorImgList = mutableListOf<Int>(R.drawable.smartphone_custom_gray_64)
+    private var course: Course? = null
+    private var lessonGlobalMapList: MutableList<HashMap<String, Any>>? = null
+    private var globalMap: MutableMap<String, Any>? = null
+    private var lessonList: MutableList<Lesson>? = null
+
 
 
     override fun onCreateView(
@@ -31,6 +46,8 @@ class CourseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_course, container, false)
+        val courseLayout = root.findViewById<NestedScrollView>(R.id.course_list_layout)
+        val progressLayout = root.findViewById<LinearLayout>(R.id.progress_course_layout)
         val navController = findNavController()
         //
         val course1 = root.findViewById<CardView>(R.id.course_item_1)
@@ -93,15 +110,22 @@ class CourseFragment : Fragment() {
         bundle.putString("email", user.email)
         bundle.putInt("level", user.currentLevel)
         bundle.putInt("stage", user.currentStage)
+
         course1.setOnClickListener {
             if (user.currentLevel > 0) {
-                navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
+                processFun("course_1", bundle, navController, courseLayout, progressLayout)
+                /*val handler = Handler().postDelayed(Runnable {
+                    Log.d("LessonList", lessonList?.size.toString())
+                    navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
+                }, 2000)*/
+
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
         }
         course2.setOnClickListener {
             if (user.currentLevel > 1) {
+                bundle.putInt("courseNumber", 2)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
@@ -109,6 +133,7 @@ class CourseFragment : Fragment() {
         }
         course3.setOnClickListener {
             if (user.currentLevel > 2) {
+                bundle.putInt("courseNumber", 3)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
@@ -116,13 +141,16 @@ class CourseFragment : Fragment() {
         }
         course4a.setOnClickListener {
             if (user.currentLevel > 3) {
+                bundle.putInt("courseNumber", 4)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
         }
         course4b.setOnClickListener {
+
             if (user.currentLevel > 3) {
+                bundle.putInt("courseNumber", 5)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
@@ -130,6 +158,7 @@ class CourseFragment : Fragment() {
         }
         course5.setOnClickListener {
             if (user.currentLevel > 4) {
+                bundle.putInt("courseNumber", 6)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
@@ -137,6 +166,7 @@ class CourseFragment : Fragment() {
         }
         course6a.setOnClickListener {
             if (user.currentLevel > 5) {
+                bundle.putInt("courseNumber", 7)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
@@ -144,6 +174,7 @@ class CourseFragment : Fragment() {
         }
         course6b.setOnClickListener {
             if (user.currentLevel > 5) {
+                bundle.putInt("courseNumber", 8)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
@@ -151,6 +182,7 @@ class CourseFragment : Fragment() {
         }
         course7.setOnClickListener {
             if (user.currentLevel > 6) {
+                bundle.putInt("courseNumber", 9)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
@@ -158,6 +190,7 @@ class CourseFragment : Fragment() {
         }
         course8.setOnClickListener {
             if (user.currentLevel > 7) {
+                bundle.putInt("courseNumber", 10)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
@@ -165,6 +198,113 @@ class CourseFragment : Fragment() {
         }
 
         return root
+    }
+
+    private fun processFun(courseName: String, bundle: Bundle, navController: NavController, courseLayout: NestedScrollView, progressBarLayout: LinearLayout) {
+        getProgressBar(courseLayout, progressBarLayout)
+        CoroutineScope(Dispatchers.IO).launch {
+            async {
+                getData(courseName)
+            }.await()
+            delay(3000)
+                Log.d("DataGlobal4", globalMap?.size.toString())
+                dataToCourse(globalMap)
+                Log.d("DataToCourse3", course?.id.toString())
+                dataToLessons(lessonGlobalMapList!!)
+                Log.d("LessonComplete3", lessonList?.size.toString())
+                goToLesson(bundle, navController)
+
+        }
+    }
+
+    @UiThread
+    suspend fun getData(courseName: String) {
+        var data = getAllData(courseName)
+        Log.d("LoadedData", data?.size.toString())
+    }
+
+     private fun getAllData(courseName: String): MutableMap<String, Any>?{
+        var dataMap: MutableMap<String, Any>? = null
+        var firestore = FirebaseFirestore.getInstance()
+            .collection("courses")
+            .document(courseName)
+            .get()
+            .addOnCompleteListener{
+                if (it.isSuccessful) {
+                    it.addOnSuccessListener { documentSnapshot ->
+                        dataMap = documentSnapshot.data
+                        globalMap = dataMap
+                        Log.d("DataSuccess", dataMap?.size.toString() + " + " + documentSnapshot.data?.size.toString())
+                        Log.d("DataGlobal1", globalMap?.size.toString())
+                    }
+                }
+                Log.d("DataGlobal2", globalMap?.size.toString())
+
+            }.addOnFailureListener {
+                Log.d("DownloadingCourse", it.message.toString())
+            }
+         Log.d("DataGlobal3", globalMap?.size.toString())
+        return globalMap
+    }
+    @UiThread
+    suspend fun dataToCourse(dataMap: MutableMap<String, Any>?) {
+        var preCourse = PreCourse(
+            dataMap?.get("name").toString(),
+            dataMap?.get("id").toString(),
+            dataMap?.get("level").toString(),
+            dataMap?.get("lessons_id") as MutableList<String>,
+            dataMap!!["lesson_list"] as MutableList<HashMap<String, Any>>)
+        Log.d("DataToCourse1", preCourse.id)
+        course = Course(
+            preCourse.name,
+            preCourse.id.toInt(),
+            preCourse.level.toInt(),
+            preCourse.lessonsId as MutableList<Int>
+        )
+        lessonGlobalMapList = preCourse.lessonsList
+
+        Log.d("DataToCourse2", lessonGlobalMapList?.size.toString())
+
+    }
+    @UiThread
+    suspend fun dataToLessons(lessonMapList: MutableList<HashMap<String, Any>>) {
+        for (i in 0 until lessonMapList.size) {
+            var lessonLocal = mutableListOf<Lesson>()
+            var preLesson = PreLesson(
+                lessonMapList[i]["lesson_id"].toString(),
+                lessonMapList[i]["name"].toString(),
+                lessonMapList[i]["course_name"].toString(),
+                lessonMapList[i]["steps"].toString(),
+                lessonMapList[i]["text_list"] as MutableList<String>,
+                lessonMapList[i]["image_list"] as MutableList<String>
+            )
+            var lesson = Lesson(
+                preLesson.id.toInt(),
+                preLesson.name,
+                preLesson.courseName,
+                preLesson.steps.toInt(),
+                preLesson.textList,
+                preLesson.imageList
+            )
+            lessonLocal.add(lesson)
+            lessonList = lessonLocal
+            Log.d("LessonComplete1", lessonList?.size.toString())
+        }
+        Log.d("LessonComplete2", lessonList?.size.toString())
+    }
+    @UiThread
+    suspend fun goToLesson(bundle: Bundle, navController: NavController) {
+        bundle.putInt("courseNumber", 1)
+
+        //bundle.putParcelable("course", course)
+        bundle.putParcelableArrayList("lessonList", ArrayList(lessonList!!))
+        Log.d("LessonList", lessonList?.size.toString())
+        navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
+    }
+
+    fun getProgressBar(courseLayout: NestedScrollView, progressBarLayout: LinearLayout) {
+        courseLayout.visibility = View.GONE
+        progressBarLayout.visibility = View.VISIBLE
     }
 
 }

@@ -8,10 +8,13 @@
     android:background="#fff">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/course_list_layout"
         android:layout_width="match_parent"
+        android:visibility="visible"
         android:layout_height="match_parent">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -19,6 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/course_item_1"
@@ -462,7 +466,19 @@
             </FrameLayout>
 
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:id="@+id/progress_course_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </LinearLayout>
 
 
 

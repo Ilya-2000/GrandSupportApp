@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.impact.grandsupportapp.R
 import com.impact.grandsupportapp.data.Lesson
 
-class LessonListRvAdapter(var context: Context, var items: List<Lesson>, var navController: NavController): RecyclerView.Adapter<LessonListRvAdapter.ViewHolder>() {
+class LessonListRvAdapter(var context: Context, var items: MutableList<Lesson>, var navController: NavController): RecyclerView.Adapter<LessonListRvAdapter.ViewHolder>() {
     private var listener: OnСlickListener? = null
     fun setListener(listener: OnСlickListener) {
         this.listener = listener
