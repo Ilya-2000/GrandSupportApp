@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 
 import com.impact.grandsupportapp.R
 
@@ -19,7 +20,7 @@ class LessonPlaceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_lesson_place, container, false)
-        val viewPager = root.findViewById<ViewPager>(R.id.lesson_vp)
+        val viewPager = root.findViewById<ViewPager2>(R.id.lesson_vp)
         return root
     }
 

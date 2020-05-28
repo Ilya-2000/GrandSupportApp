@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.UiThread
@@ -47,7 +48,7 @@ class CourseFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_course, container, false)
         val courseLayout = root.findViewById<NestedScrollView>(R.id.course_list_layout)
-        val progressLayout = root.findViewById<LinearLayout>(R.id.progress_course_layout)
+        val progressLayout = root.findViewById<FrameLayout>(R.id.progress_course_layout)
         val navController = findNavController()
         //
         val course1 = root.findViewById<CardView>(R.id.course_item_1)
@@ -200,7 +201,7 @@ class CourseFragment : Fragment() {
         return root
     }
 
-    private fun processFun(courseName: String, bundle: Bundle, navController: NavController, courseLayout: NestedScrollView, progressBarLayout: LinearLayout) {
+    private fun processFun(courseName: String, bundle: Bundle, navController: NavController, courseLayout: NestedScrollView, progressBarLayout: FrameLayout) {
         getProgressBar(courseLayout, progressBarLayout)
         CoroutineScope(Dispatchers.IO).launch {
             async {
@@ -302,7 +303,7 @@ class CourseFragment : Fragment() {
         navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
     }
 
-    fun getProgressBar(courseLayout: NestedScrollView, progressBarLayout: LinearLayout) {
+    fun getProgressBar(courseLayout: NestedScrollView, progressBarLayout: FrameLayout) {
         courseLayout.visibility = View.GONE
         progressBarLayout.visibility = View.VISIBLE
     }

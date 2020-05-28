@@ -1,6 +1,8 @@
 package com.impact.grandsupportapp.adapter
 
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +12,15 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.impact.grandsupportapp.R
 import com.impact.grandsupportapp.data.Lesson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class LessonListRvAdapter(var context: Context, var items: MutableList<Lesson>, var navController: NavController): RecyclerView.Adapter<LessonListRvAdapter.ViewHolder>() {
     private var listener: OnСlickListener? = null
+    private var lessonList: MutableList<Lesson>? = null
+
     fun setListener(listener: OnСlickListener) {
         this.listener = listener
     }
@@ -37,7 +45,8 @@ class LessonListRvAdapter(var context: Context, var items: MutableList<Lesson>, 
         holder.bind(items[position])
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, "click ${position.toString()}", Toast.LENGTH_LONG).show()
+            getData(position)
+
         }
     }
 
@@ -54,6 +63,29 @@ class LessonListRvAdapter(var context: Context, var items: MutableList<Lesson>, 
     public interface OnСlickListener {
         fun onClick(position: Int)
 
+    }
+
+     fun getData(position: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+          val data = dataProcess(items)
+            delay(500)
+            lessonList = data
+            val lesson = dataToLesson(position)
+            delay(500)
+            var bundle = Bundle()
+            bundle.putParcelable("lesson", lesson)
+            delay(100)
+            Log.d("LessonComplete1", lesson?.name.toString())
+            navController.navigate(R.id.action_lessonListFragment_to_lessonPlaceFragment, bundle)
+        }
+    }
+
+    suspend fun dataProcess(items: MutableList<Lesson>): MutableList<Lesson> {
+        return items
+    }
+    suspend fun dataToLesson(position: Int): Lesson? {
+        var lesson = lessonList?.get(position)
+        return lesson
     }
 }
 
