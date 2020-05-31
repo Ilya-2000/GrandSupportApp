@@ -21,6 +21,7 @@ class LessonListRvAdapter(var context: Context, var items: MutableList<Lesson>, 
     private var listener: OnСlickListener? = null
     private var lessonList: MutableList<Lesson>? = null
 
+
     fun setListener(listener: OnСlickListener) {
         this.listener = listener
     }
