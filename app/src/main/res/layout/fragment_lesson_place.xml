@@ -8,16 +8,15 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/lesson_vp"
+        app:layout_anchor="@id/tab_lesson"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout_lesson"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        app:tabBackground="@color/colorPrimary"
-        app:tabMode="fixed"
+        android:id="@+id/tab_lesson"
         app:tabSelectedTextColor="@color/colorAccent"
-        app:tabTextColor="#fff" />
+        app:tabTextColor="#fff"
+        app:tabBackground="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </FrameLayout>

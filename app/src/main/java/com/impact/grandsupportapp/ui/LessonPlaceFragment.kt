@@ -7,12 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.storage.FirebaseStorage
 
 import com.impact.grandsupportapp.R
-import com.impact.grandsupportapp.adapter.LessonViewPagerAdapter
+//import com.impact.grandsupportapp.adapter.LessonViewPagerAdapter
 import com.impact.grandsupportapp.adapter.LessonVpAdapter
+import com.impact.grandsupportapp.data.Global
 import com.impact.grandsupportapp.data.Lesson
+import github.chenupt.springindicator.SpringIndicator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -31,15 +35,23 @@ class LessonPlaceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_lesson_place, container, false)
+        val tabLayout = root.findViewById<TabLayout>(R.id.tab_lesson)
         lesson = arguments?.get("lesson") as Lesson
+        val global = Global()
+        global.lesson = lesson
         //imageList = lesson?.imageList
         val viewPager = root.findViewById<ViewPager2>(R.id.lesson_vp)
         Log.d("LessonInPlace", lesson?.name.toString())
         //getImage(imageList)
-        //val adapter = LessonVpAdapter(lesson)
-        val adapter = LessonViewPagerAdapter(requireActivity(), lesson)
+        val adapter = LessonVpAdapter(lesson)
+        //val adapter = LessonViewPagerAdapter(requireActivity(), lesson)
         viewPager.adapter = adapter
-        //viewPager.offscreenPageLimit = lesson?.steps!!
+        viewPager.offscreenPageLimit = lesson?.steps!!
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = position.toString()
+        }
+
+
         return root
     }
 

@@ -207,7 +207,7 @@ class CourseFragment : Fragment() {
             async {
                 getData(courseName)
             }.await()
-            delay(3000)
+            delay(6000)
                 Log.d("DataGlobal4", globalMap?.size.toString())
                 dataToCourse(globalMap)
                 Log.d("DataToCourse3", course?.id.toString())

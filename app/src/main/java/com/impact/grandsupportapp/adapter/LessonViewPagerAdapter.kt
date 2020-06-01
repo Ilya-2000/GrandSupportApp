@@ -8,16 +8,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.impact.grandsupportapp.data.Lesson
 import com.impact.grandsupportapp.ui.LessonItemFragment
 
-class LessonViewPagerAdapter(activity: FragmentActivity, private val item: Lesson?): FragmentStateAdapter(activity) {
+/*class LessonViewPagerAdapter(activity: FragmentActivity, private val item: Lesson?): FragmentStateAdapter(activity) {
     override fun getItemCount(): Int = item?.steps!!
 
 
 
-    override fun createFragment(position: Int): Fragment = LessonItemFragment().apply {
-        arguments = bundleOf(
-            "text" to item?.textList?.get(position),
-            "title" to item?.name,
-            "image" to item?.imageList?.get(position)
-        )
+    override fun createFragment(position: Int): Fragment {
+        //return LessonItemFragment().newInstance(position)
     }
-}
+}*/

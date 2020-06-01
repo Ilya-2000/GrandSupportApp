@@ -1,6 +1,7 @@
 package com.impact.grandsupportapp.ui
 
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import com.impact.grandsupportapp.R
+import com.impact.grandsupportapp.data.Global
+import com.impact.grandsupportapp.data.Lesson
 import com.squareup.picasso.Picasso
 
 /**
@@ -35,11 +38,21 @@ class LessonItemFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        arguments.let {
-            lessonText = it?.getString("text")
-            lessonTitle = it?.getString("title")
-            lessonImg = it?.getString("image")
-        }
+        /*var position = arguments?.getInt("position")
+        var lesson: Lesson? = arguments?.getParcelable<Lesson>("lesson")
+        lessonTitle = lesson?.name
+        lessonText = lesson?.textList?.get(position!!)
+        lessonImg = lesson?.imageList?.get(position!!)*/
+
     }
+    /*fun newInstance(position: Int): LessonItemFragment {
+        val args = Bundle()
+        val global = Global()
+        args.putParcelable("lesson", global.lesson)
+        args.putInt("position", position)
+        val fragment = LessonItemFragment()
+        fragment.arguments = args
+        return fragment
+    }*/
 
 }
