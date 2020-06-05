@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -36,22 +39,35 @@ class LessonPlaceFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_lesson_place, container, false)
         val tabLayout = root.findViewById<TabLayout>(R.id.tab_lesson)
+        val closeBtn = root.findViewById<ImageButton>(R.id.back_to_lesson_btn)
+        val checkBtn = root.findViewById<ImageButton>(R.id.check_lesson_end_btn)
         lesson = arguments?.get("lesson") as Lesson
+        val navController = findNavController()
         val global = Global()
         global.lesson = lesson
         //imageList = lesson?.imageList
         val viewPager = root.findViewById<ViewPager2>(R.id.lesson_vp)
         Log.d("LessonInPlace", lesson?.name.toString())
         //getImage(imageList)
-        val adapter = LessonVpAdapter(lesson)
+        val adapter = LessonVpAdapter(lesson, requireContext())
         //val adapter = LessonViewPagerAdapter(requireActivity(), lesson)
         viewPager.adapter = adapter
-        viewPager.offscreenPageLimit = lesson?.steps!!
+        //viewPager.offscreenPageLimit = lesson?.steps!!
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = position.toString()
+            val steps = lesson?.steps
+            if (steps == (position + 1)) {
+                checkBtn.visibility = View.VISIBLE
+            }
+            tab.text = ("Шаг " + (position + 1).toString())
+            viewPager.setCurrentItem(tab.position, true)
+        }.attach()
+
+        checkBtn.setOnClickListener {
+            requireActivity().onBackPressed()
         }
-
-
+        closeBtn.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
         return root
     }
 

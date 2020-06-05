@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_courseFragment_to_lessonListFragment"
             app:destination="@id/lessonListFragment" />
+        <action
+            android:id="@+id/action_courseFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -46,4 +49,17 @@
         android:name="com.impact.grandsupportapp.ui.LessonPlaceFragment"
         android:label="fragment_lesson_place"
         tools:layout="@layout/fragment_lesson_place" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.impact.grandsupportapp.ui.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.impact.grandsupportapp.ui.EditProfileFragment"
+        android:label="EditProfileFragment" />
 </navigation>

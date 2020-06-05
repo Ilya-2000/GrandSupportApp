@@ -58,6 +58,8 @@ class LessonListRvAdapter(var context: Context, var items: MutableList<Lesson>, 
         fun  bind(item: Lesson) {
             itemName.text = item.name
             itemSteps.text = item.steps.toString()
+
+
         }
     }
 

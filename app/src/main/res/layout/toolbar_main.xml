@@ -6,6 +6,8 @@
     android:minHeight="?android:attr/actionBarSize"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     android:background="?attr/colorPrimary"
+    app:popupTheme="@style/AppTheme.PopupOverlay"
+    app:menu="@menu/main_menu"
     >
 </androidx.appcompat.widget.Toolbar>
 

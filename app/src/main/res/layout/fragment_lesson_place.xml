@@ -5,6 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.LessonPlaceFragment">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:cardBackgroundColor="@color/colorPrimary">
+        <ImageButton
+        android:id="@+id/back_to_lesson_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_baseline_close_24"
+        android:background="@color/colorPrimary"
+        android:contentDescription="back"/>
+
+        <ImageButton
+            android:id="@+id/check_lesson_end_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_baseline_check_24"
+            android:background="@color/colorPrimary"
+            android:contentDescription="back"/>
+    </androidx.cardview.widget.CardView>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/lesson_vp"
@@ -16,6 +41,8 @@
         android:id="@+id/tab_lesson"
         app:tabSelectedTextColor="@color/colorAccent"
         app:tabTextColor="#fff"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="#e0e0e0"
         app:tabBackground="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

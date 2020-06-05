@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.UiThread
 import androidx.cardview.widget.CardView
 import androidx.core.os.bundleOf
@@ -50,6 +47,7 @@ class CourseFragment : Fragment() {
         val courseLayout = root.findViewById<NestedScrollView>(R.id.course_list_layout)
         val progressLayout = root.findViewById<FrameLayout>(R.id.progress_course_layout)
         val navController = findNavController()
+        val profileBtn = root.findViewById<ImageButton>(R.id.profile_btn)
         //
         val course1 = root.findViewById<CardView>(R.id.course_item_1)
         val course2 = root.findViewById<CardView>(R.id.course_item_2)
@@ -197,6 +195,14 @@ class CourseFragment : Fragment() {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
         }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
+        profileBtn.setOnClickListener {
+            navController.navigate(R.id.action_courseFragment_to_userProfileFragment, bundle)
+        }
+
+
+
+
 
         return root
     }

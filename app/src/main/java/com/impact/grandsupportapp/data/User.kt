@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey
 data class User(
     @PrimaryKey
     var id: String,
-    val name: String,
-    val email: String,
-    val password: String,
+    var name: String,
+    var email: String,
+    var password: String,
     @ColumnInfo(name = "current_level")
     val currentLevel: Int,
     @ColumnInfo(name = "current_stage")
