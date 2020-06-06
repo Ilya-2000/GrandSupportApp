@@ -44,7 +44,10 @@ class SplashFragment : Fragment() {
               }, 2000)
 
           } else {
-              navController.navigate(R.id.action_splashFragment_to_loginFragment)
+              val handler = Handler().postDelayed(Runnable {
+                  navController.navigate(R.id.action_splashFragment_to_loginFragment)
+              }, 2000)
+
           }
 
     }

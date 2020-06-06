@@ -55,12 +55,20 @@ class LessonPlaceFragment : Fragment() {
         //viewPager.offscreenPageLimit = lesson?.steps!!
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             val steps = lesson?.steps
-            if (steps == (position + 1)) {
-                checkBtn.visibility = View.VISIBLE
-            }
             tab.text = ("Шаг " + (position + 1).toString())
             viewPager.setCurrentItem(tab.position, true)
         }.attach()
+
+        viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if (position == (lesson?.steps?.minus(1))) {
+                    checkBtn.visibility = View.VISIBLE
+                } else {
+                    checkBtn.visibility = View.GONE
+                }
+            }
+        })
 
         checkBtn.setOnClickListener {
             requireActivity().onBackPressed()
@@ -70,6 +78,8 @@ class LessonPlaceFragment : Fragment() {
         }
         return root
     }
+
+
 
 
 

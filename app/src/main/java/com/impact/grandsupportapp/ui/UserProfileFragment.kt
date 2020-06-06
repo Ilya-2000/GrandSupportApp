@@ -13,16 +13,19 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 import com.impact.grandsupportapp.R
 import com.impact.grandsupportapp.data.User
+import kotlinx.coroutines.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class UserProfileFragment : Fragment() {
+    private var user: User? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val root = inflater.inflate(R.layout.fragment_user_profile, container, false)
         val nameText = root.findViewById<TextView>(R.id.name_profile_text)
         val emailText = root.findViewById<TextView>(R.id.current_email_profile)
@@ -33,7 +36,7 @@ class UserProfileFragment : Fragment() {
 
         val navController = findNavController()
 
-        var user = User(
+         user = User(
             arguments?.get("id")!!.toString(),
             arguments?.get("name")!!.toString(),
             arguments?.get("email")!!.toString(),
@@ -42,6 +45,43 @@ class UserProfileFragment : Fragment() {
             arguments?.get("stage") as Int
         )
 
+
+
+
+        nameText.text = user?.name
+        emailText.text = user?.email
+        passwordText.text = user?.password
+        levelText.text = user?.currentLevel.toString()
+
+        val bundle = Bundle()
+        bundle.putString("id",user?.id)
+        bundle.putString("name",user?.name)
+        bundle.putString("password", user?.password)
+        bundle.putString("email", user?.email)
+        bundle.putInt("level", user?.currentLevel!!)
+        bundle.putInt("stage", user?.currentStage!!)
+
+        editBtn.setOnClickListener {
+            navController.navigate(R.id.action_userProfileFragment_to_editProfileFragment, bundle)
+        }
+
+        backBtn.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+        return root
+    }
+
+    /*fun getData() {
+        CoroutineScope(Dispatchers.IO).launch {
+            async {
+                getUser()
+                delay(1000)
+            }.await()
+
+        }
+    }
+
+    suspend fun getUser() {
         var db = FirebaseFirestore.getInstance()
             .collection("users")
             .document()
@@ -56,29 +96,6 @@ class UserProfileFragment : Fragment() {
             }.addOnFailureListener {
 
             }
-
-
-        nameText.text = user.name
-        emailText.text = user.email
-        passwordText.text = user.password
-        levelText.text = user.currentLevel.toString()
-
-        val bundle = Bundle()
-        bundle.putString("id",user.id)
-        bundle.putString("name",user.name)
-        bundle.putString("password", user.password)
-        bundle.putString("email", user.email)
-        bundle.putInt("level", user.currentLevel)
-        bundle.putInt("stage", user.currentStage)
-
-        editBtn.setOnClickListener {
-            navController.navigate(R.id.action_userProfileFragment_to_editProfileFragment, bundle)
-        }
-
-        backBtn.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
-        return root
-    }
+    }*/
 
 }

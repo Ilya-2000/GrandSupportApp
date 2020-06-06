@@ -20,8 +20,6 @@ import kotlinx.coroutines.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -31,6 +29,7 @@ private const val ARG_PARAM2 = "param2"
 class EditProfileFragment : Fragment() {
     private var currentEmail: String? = null
     private var currentPassword: String? = null
+    private var newPass: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -68,8 +67,8 @@ class EditProfileFragment : Fragment() {
 
         acceptBtn.setOnClickListener {
             user.name = nameText.text.toString()
-            user.email = emailText.text.toString()
             user.password = passwordText.text.toString()
+            newPass = passwordText.text.toString()
             dataProcess(user)
             requireActivity().onBackPressed()
         }
@@ -106,7 +105,11 @@ class EditProfileFragment : Fragment() {
         firebaseAuth?.reauthenticate(authCredential)
             ?.addOnCompleteListener {
                 if (it.isSuccessful) {
-                    firebaseAuth.updatePassword(user.password)
+                    firebaseAuth.updatePassword(this.newPass.toString()).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Log.d("PasswordUpdate", "Success")
+                        }
+                    }
                 }
             }
 

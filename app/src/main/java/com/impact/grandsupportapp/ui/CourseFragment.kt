@@ -1,5 +1,6 @@
 package com.impact.grandsupportapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Parcelable
@@ -23,7 +24,8 @@ import com.impact.grandsupportapp.data.*
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.*
-import java.util.ArrayList
+import java.util.*
+import kotlin.collections.HashMap
 
 /**
  * A simple [Fragment] subclass.
@@ -44,6 +46,7 @@ class CourseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_course, container, false)
+        val exitBtn = root.findViewById<ImageButton>(R.id.exit_to_app)
         val courseLayout = root.findViewById<NestedScrollView>(R.id.course_list_layout)
         val progressLayout = root.findViewById<FrameLayout>(R.id.progress_course_layout)
         val navController = findNavController()
@@ -109,6 +112,13 @@ class CourseFragment : Fragment() {
         bundle.putString("email", user.email)
         bundle.putInt("level", user.currentLevel)
         bundle.putInt("stage", user.currentStage)
+
+        exitBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_HOME)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
 
         course1.setOnClickListener {
             if (user.currentLevel > 0) {

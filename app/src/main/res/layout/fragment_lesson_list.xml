@@ -4,8 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.LessonListFragment">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <ImageButton
+            android:id="@+id/back_to_course_lesson_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:background="@color/colorPrimary"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="24sp"
+            android:layout_gravity="center"
+            android:textColor="#fff" />
+
+    </FrameLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lesson_list_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"/>
 </FrameLayout>
