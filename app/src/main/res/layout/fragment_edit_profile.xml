@@ -103,29 +103,6 @@
                 android:textColor="#000"
                 android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="10dp"
-                android:text="Прогресс: "
-                android:textColor="#000"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/current_progress_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="10dp"
-                android:text="0"
-                android:textColor="#000"
-                android:textSize="18sp" />
-
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView

@@ -12,7 +12,7 @@ data class User(
     var email: String,
     var password: String,
     @ColumnInfo(name = "current_level")
-    val currentLevel: Int,
+    var currentLevel: Int,
     @ColumnInfo(name = "current_stage")
     val currentStage: Int
 

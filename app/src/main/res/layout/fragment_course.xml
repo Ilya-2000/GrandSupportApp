@@ -82,7 +82,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/smartphone_custom_gray_64" />
+                        android:src="@drawable/smartphone_custom_gray" />
 
                     <TextView
                         android:layout_width="100dp"
@@ -124,7 +124,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/smartphone_custom_gray_64" />
+                        android:src="@drawable/alarm_custom_gray" />
 
                     <TextView
                         android:layout_width="100dp"
@@ -166,7 +166,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/smartphone_custom_gray_64" />
+                        android:src="@drawable/internet_custom_gray" />
 
                     <TextView
                         android:layout_width="100dp"
@@ -212,7 +212,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="117dp"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/smartphone_custom_gray_64" />
+                            android:src="@drawable/gosuslugi_custom_gray" />
 
                         <TextView
                             android:layout_width="100dp"
@@ -255,7 +255,7 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/smartphone_custom_gray_64" />
+                            android:src="@drawable/bank_custom_gray" />
 
                         <TextView
                             android:layout_width="100dp"
@@ -299,7 +299,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/smartphone_custom_gray_64" />
+                        android:src="@drawable/mail_custom_gray" />
 
                     <TextView
                         android:layout_width="100dp"
@@ -328,7 +328,7 @@
                     android:layout_margin="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
+                    android:layout_gravity="center"
                     app:cardElevation="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -345,7 +345,7 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/smartphone_custom_gray_64" />
+                            android:src="@drawable/social_custom_gray" />
 
                         <TextView
                             android:layout_width="100dp"
@@ -365,90 +365,10 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/course_item_6b"
-                    android:layout_margin="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    app:cardElevation="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/image_course_8"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center_horizontal"
-                            android:src="@drawable/smartphone_custom_gray_64" />
-
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="Мессенджеры"
-                            android:textAlignment="center"
-                            android:textSize="14sp" />
-
-                        <ProgressBar
-                            android:id="@+id/progress_course_6b"
-                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:max="100" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
             </FrameLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/course_item_7"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                app:cardElevation="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/image_course_9"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/smartphone_custom_gray_64" />
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Интернет продолжение"
-                        android:textAlignment="center"
-                        android:textSize="14sp" />
-
-                    <ProgressBar
-                        android:id="@+id/progress_course_7"
-                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:max="100" />
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -477,7 +397,7 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/smartphone_custom_gray_64" />
+                            android:src="@drawable/settings_custom_gray" />
 
                         <TextView
                             android:layout_width="100dp"
@@ -524,7 +444,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal||bottom"
+            android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="10dp"/>
 
     </FrameLayout>

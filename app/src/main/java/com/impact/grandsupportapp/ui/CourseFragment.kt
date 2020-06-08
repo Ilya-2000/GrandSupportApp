@@ -32,13 +32,13 @@ import kotlin.collections.HashMap
  */
 class CourseFragment : Fragment() {
     private val courseBtnList: MutableList<CourseButton>? = null
-    private val colorImgList = mutableListOf<Int>(R.drawable.smartphone_custom64)
-    private val unColorImgList = mutableListOf<Int>(R.drawable.smartphone_custom_gray_64)
+    private val colorImgList = mutableListOf<Int>(R.drawable.smartphone_custom, R.drawable.alarm_custom, R.drawable.internet_custom, R.drawable.gosuslugi_custom, R.drawable.bank_custom, R.drawable.mail_custom, R.drawable.social_custom, R.drawable.settings_custom)
+    private val unColorImgList = mutableListOf<Int>(R.drawable.smartphone_custom_gray, R.drawable.alarm_custom_gray, R.drawable.internet_custom_gray, R.drawable.gosuslugi_custom_gray, R.drawable.bank_custom_gray, R.drawable.mail_custom_gray, R.drawable.social_custom_gray, R.drawable.settings_custom_gray)
     private var course: Course? = null
     private var lessonGlobalMapList: MutableList<HashMap<String, Any>>? = null
     private var globalMap: MutableMap<String, Any>? = null
     private var lessonList: MutableList<Lesson>? = null
-
+    private var user: User? = null
 
 
     override fun onCreateView(
@@ -59,8 +59,6 @@ class CourseFragment : Fragment() {
         val course4b = root.findViewById<CardView>(R.id.course_item_4b)
         val course5 = root.findViewById<CardView>(R.id.course_item_5)
         val course6a = root.findViewById<CardView>(R.id.course_item_6a)
-        val course6b = root.findViewById<CardView>(R.id.course_item_6b)
-        val course7 = root.findViewById<CardView>(R.id.course_item_7)
         val course8 = root.findViewById<CardView>(R.id.course_item_8)
         //
         val image1 = root.findViewById<CircleImageView>(R.id.image_course_1)
@@ -70,27 +68,26 @@ class CourseFragment : Fragment() {
         val image5 = root.findViewById<CircleImageView>(R.id.image_course_5)
         val image6 = root.findViewById<CircleImageView>(R.id.image_course_6)
         val image7 = root.findViewById<CircleImageView>(R.id.image_course_7)
-        val image8 = root.findViewById<CircleImageView>(R.id.image_course_8)
-        val image9 = root.findViewById<CircleImageView>(R.id.image_course_9)
         val image10 = root.findViewById<CircleImageView>(R.id.image_course_10)
-        val imageList = mutableListOf<CircleImageView>(image1, image2, image3, image4, image5, image6, image7, image8, image9, image10)
+        val imageList = mutableListOf<CircleImageView>(image1, image2, image3, image4, image5, image6, image7, image10)
 
-
-        var id = arguments?.get("id")?.toString()
-        var user = User(
+         user = User(
             arguments?.get("id")!!.toString(),
             arguments?.get("name")!!.toString(),
-            arguments?.get("email")!!.toString(),
+             arguments?.get("email")!!.toString(),
             arguments?.get("password")!!.toString(),
             arguments?.get("level") as Int,
             arguments?.get("stage") as Int
         )
+        getUserGlobal(user?.email!!)
 
-        Log.d("UserIsReady", user.name)
+
+
+
         var j: Int = 0
-        for (i in 0 until user.currentLevel) {
+        for (i in 0 until user?.currentLevel!!) {
 
-            if (i == 3 || i == 6){
+            if (i == 3){
                 Picasso.get()
                     .load(colorImgList[j])
                     .into(imageList[j])
@@ -106,12 +103,12 @@ class CourseFragment : Fragment() {
             j++
         }
         val bundle = Bundle()
-        bundle.putString("id",user.id)
-        bundle.putString("name",user.name)
-        bundle.putString("password", user.password)
-        bundle.putString("email", user.email)
-        bundle.putInt("level", user.currentLevel)
-        bundle.putInt("stage", user.currentStage)
+        bundle.putString("id",user?.id)
+        bundle.putString("name",user?.name)
+        bundle.putString("password", user?.password)
+        bundle.putString("email", user?.email)
+        bundle.putInt("level", user?.currentLevel!!)
+        bundle.putInt("stage", user?.currentStage!!)
 
         exitBtn.setOnClickListener {
             val intent = Intent(Intent.ACTION_MAIN)
@@ -121,7 +118,7 @@ class CourseFragment : Fragment() {
         }
 
         course1.setOnClickListener {
-            if (user.currentLevel > 0) {
+            if (user?.currentLevel!! > 0) {
                 processFun("course_1", bundle, navController, courseLayout, progressLayout)
                 /*val handler = Handler().postDelayed(Runnable {
                     Log.d("LessonList", lessonList?.size.toString())
@@ -133,7 +130,7 @@ class CourseFragment : Fragment() {
             }
         }
         course2.setOnClickListener {
-            if (user.currentLevel > 1) {
+            if (user?.currentLevel!! > 1) {
                 bundle.putInt("courseNumber", 2)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
@@ -141,7 +138,7 @@ class CourseFragment : Fragment() {
             }
         }
         course3.setOnClickListener {
-            if (user.currentLevel > 2) {
+            if (user?.currentLevel!! > 2) {
                 bundle.putInt("courseNumber", 3)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
@@ -149,7 +146,7 @@ class CourseFragment : Fragment() {
             }
         }
         course4a.setOnClickListener {
-            if (user.currentLevel > 3) {
+            if (user?.currentLevel!! > 3) {
                 bundle.putInt("courseNumber", 4)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
@@ -158,7 +155,7 @@ class CourseFragment : Fragment() {
         }
         course4b.setOnClickListener {
 
-            if (user.currentLevel > 3) {
+            if (user?.currentLevel!! > 3) {
                 bundle.putInt("courseNumber", 5)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
@@ -166,7 +163,7 @@ class CourseFragment : Fragment() {
             }
         }
         course5.setOnClickListener {
-            if (user.currentLevel > 4) {
+            if (user?.currentLevel!! > 4) {
                 bundle.putInt("courseNumber", 6)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
@@ -174,31 +171,16 @@ class CourseFragment : Fragment() {
             }
         }
         course6a.setOnClickListener {
-            if (user.currentLevel > 5) {
+            if (user?.currentLevel!! > 5) {
                 bundle.putInt("courseNumber", 7)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
         }
-        course6b.setOnClickListener {
-            if (user.currentLevel > 5) {
-                bundle.putInt("courseNumber", 8)
-                navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
-            } else {
-                Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
-            }
-        }
-        course7.setOnClickListener {
-            if (user.currentLevel > 6) {
-                bundle.putInt("courseNumber", 9)
-                navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
-            } else {
-                Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
-            }
-        }
+
         course8.setOnClickListener {
-            if (user.currentLevel > 7) {
+            if (user?.currentLevel!! > 7) {
                 bundle.putInt("courseNumber", 10)
                 navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
@@ -285,8 +267,9 @@ class CourseFragment : Fragment() {
     }
     @UiThread
     suspend fun dataToLessons(lessonMapList: MutableList<HashMap<String, Any>>) {
+        var lessonLocal = mutableListOf<Lesson>()
         for (i in 0 until lessonMapList.size) {
-            var lessonLocal = mutableListOf<Lesson>()
+
             var preLesson = PreLesson(
                 lessonMapList[i]["lesson_id"].toString(),
                 lessonMapList[i]["name"].toString(),
@@ -304,9 +287,11 @@ class CourseFragment : Fragment() {
                 preLesson.imageList
             )
             lessonLocal.add(lesson)
-            lessonList = lessonLocal
+            /*var l = lesson*/
+
             Log.d("LessonComplete1", lessonList?.size.toString())
         }
+        lessonList = lessonLocal
         Log.d("LessonComplete2", lessonList?.size.toString())
     }
     @UiThread
@@ -322,6 +307,43 @@ class CourseFragment : Fragment() {
     fun getProgressBar(courseLayout: NestedScrollView, progressBarLayout: FrameLayout) {
         courseLayout.visibility = View.GONE
         progressBarLayout.visibility = View.VISIBLE
+    }
+
+
+   fun getUserGlobal(email: String) {
+       CoroutineScope(Dispatchers.IO).launch {
+               getUser(email)
+               delay(1000)
+
+       }
+   }
+
+    suspend fun getUser(email: String) {
+        val userFirestore = FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(email)
+            .get()
+            .addOnSuccessListener {
+
+                var preUser = PreUser(
+                    it["id"].toString(),
+                    it["name"].toString(),
+                    it["email"].toString(),
+                    it["password"].toString(),
+                    it["level"].toString(),
+                    it["stage"].toString())
+
+
+                user = User(
+                    preUser.id,
+                    preUser.name,
+                    preUser.email,
+                    preUser.password,
+                    preUser.currentLevel.toInt(),
+                    preUser.currentStage.toInt()
+                )
+                Log.d("UserInCourseLoaded", user?.name.toString())
+            }
     }
 
 }

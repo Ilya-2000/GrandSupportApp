@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.os.bundleOf
@@ -21,15 +22,18 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 import com.impact.grandsupportapp.R
+import com.impact.grandsupportapp.data.PreUser
 import com.impact.grandsupportapp.data.User
 import com.impact.grandsupportapp.database.userDb.UserDao
 import com.impact.grandsupportapp.database.userDb.UserDb
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.*
 import java.io.BufferedWriter
 import java.io.File
 import java.io.OutputStreamWriter
+import java.lang.Runnable
 import kotlin.math.log
 
 /**
@@ -46,6 +50,7 @@ class LoginFragment : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_login, container, false)
+        val  progressLogin = root.findViewById<FrameLayout>(R.id.progress_login_layout)
         dataBase = UserDb.getUserDb(requireContext())
 
         val emailRegText = root.findViewById<EditText>(R.id.email_reg_text)
@@ -71,39 +76,28 @@ class LoginFragment : Fragment() {
             val password: String = passwordLoginText.text.toString()
 
             if (email.length > 4 && email.contains("@") && password.length > 4) {
+                var user3: User? = null
                 var firebaseAuth = FirebaseAuth.getInstance()
                     firebaseAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             val currentUser = firebaseAuth.currentUser
                             Log.d("CurrentUser", currentUser!!.uid)
+                            //getGlobalUser(email, currentUser.uid)
                             //var user = getUser(currentUser.uid.toString(), this.requireContext())
                             var user1: User
                             Observable.fromCallable {
                                 dataBase = UserDb.getUserDb(this.requireContext())
                                 userDao = dataBase?.userDao()
                                 user1 = userDao?.getUserById(currentUser.uid)!!
-                                var user2 = User(user1.id, user1.name, user1.email, user1.password, user1.currentLevel, user1.currentStage)
-                                if (user1 != null) {
-                                    Log.d("UserFromRoom", user1.email + " " + user1.id)
+
+                                var user2 = User(user1.id, user1.name, user1.email, user1?.password!!, user1?.currentLevel!!, user1?.currentStage!!)
+                                if (user2 != null) {
+                                    Log.d("UserFromRoom", user2.email + " " + user2.id)
                                     user = User(user2.id, user2.name, user2.email, user2.password, user2.currentLevel, user2.currentStage)
 
                                 } else {
-                                    val firebaseFirestore = FirebaseFirestore.getInstance()
-                                        .collection("users")
-                                        .document(email)
-                                        .get()
-                                        .addOnCompleteListener {
-                                            if (it.isSuccessful) {
-                                                Log.d("LoadFromFirebase", it.result.toString())
-                                                it.addOnSuccessListener {
-                                                    user = User(it["id"].toString(), it["name"].toString(), it["email"].toString(),
-                                                        it["password"].toString(), it["level"] as Int, it["stage"] as Int)
-                                                }
-                                            } else {
-                                                Log.d("LoadFromFirebase", it.exception.toString())
-                                            }
-                                        }
+
                                     Log.d("UserFromRoom", "Null")
                                 }
                                 //Log.d("UserFromRoom", user?.email + " " + user?.id)
@@ -114,7 +108,9 @@ class LoginFragment : Fragment() {
                                 .subscribe()
 
                             val handler = Handler().postDelayed(Runnable {
-                                val bundle = Bundle()
+                                progressLogin.visibility = View.VISIBLE
+                                getGlobalUser(email, currentUser.uid, navController)
+                                /*val bundle = Bundle()
                                 bundle.putString("id",user?.id)
                                 bundle.putString("name",user?.name)
                                 bundle.putString("password", user?.password)
@@ -122,7 +118,7 @@ class LoginFragment : Fragment() {
                                 bundle.putInt("level", user?.currentLevel!!)
                                 bundle.putInt("stage", user?.currentStage!!)
                                 Log.d("UserIsReady", user?.name.toString())
-                                navController.navigate(R.id.action_loginFragment_to_courseFragment, bundle)
+                                navController.navigate(R.id.action_loginFragment_to_courseFragment, bundle)*/
                             }, 1000)
 
                             //передать user в course и перейти туда
@@ -251,6 +247,66 @@ class LoginFragment : Fragment() {
             }
             .addOnFailureListener {
                 Log.d("WriteInFirebase", it.message.toString())
+            }
+    }
+
+    private fun getGlobalUser(email: String, uid: String, navController: NavController) {
+        CoroutineScope(Dispatchers.IO).launch {
+
+            async {
+                getUserFromFb(email, uid, navController)
+            }.await()
+            delay(6000)
+        }
+    }
+    suspend fun getUserFromFb(email: String, uid: String, navController: NavController) {
+        val firebaseFirestore = FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(email)
+            .get()
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Log.d("LoadFromFirebase", it.result.toString())
+                    it.addOnSuccessListener {
+                        var preUser = PreUser(it["id"].toString(), it["name"].toString(), it["email"].toString(),
+                            it["password"].toString(), it["level"].toString(), it["stage"].toString())
+                        user = User(
+                                preUser.id,
+                                preUser.name,
+                                preUser.email,
+                                preUser.password,
+                                preUser.currentLevel.toInt(),
+                                preUser.currentStage.toInt())
+                        var userLocal = User(
+                            preUser.id,
+                            preUser.name,
+                            preUser.email,
+                            preUser.password,
+                            preUser.currentLevel.toInt(),
+                            preUser.currentStage.toInt()
+                        )
+
+                        val bundle = Bundle()
+                        bundle.putString("id",userLocal?.id)
+                        bundle.putString("name",userLocal?.name)
+                        bundle.putString("password", userLocal?.password)
+                        bundle.putString("email", userLocal?.email)
+                        bundle.putInt("level", userLocal?.currentLevel!!)
+                        bundle.putInt("stage", userLocal?.currentStage!!)
+                        Log.d("UserIsReady", userLocal?.name.toString())
+                        navController.navigate(R.id.action_loginFragment_to_courseFragment, bundle)
+
+                        /*dataBase = UserDb.getUserDb(this.requireContext())
+                        userDao = dataBase?.userDao()
+                        userDao?.insert(user!!)*/
+
+                        /*dataBase = UserDb.getUserDb(requireContext())
+                        userDao = dataBase?.userDao()
+                        user = userDao?.getUserById(uid)*/
+                    }
+                } else {
+                    Log.d("LoadFromFirebase", it.exception.toString())
+                }
             }
     }
 }
