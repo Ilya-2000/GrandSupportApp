@@ -137,7 +137,7 @@ class LoginFragment : Fragment() {
              val password: String = passRegText.text.toString()
              val password2: String = pass2RegText.text.toString()
              val name: String = userNameRegText.text.toString()
-             val user = User("", name, email, password, 1, 1)
+             val user = User("", name, email, password, 7, 1)
              if (email.length > 4 && email.contains("@") && password == password2 && password.length > 4) {
                  val auth = FirebaseAuth.getInstance()
                      .createUserWithEmailAndPassword(email, password)
@@ -151,7 +151,7 @@ class LoginFragment : Fragment() {
                      }
                      .addOnSuccessListener {
                          Log.d("ResultRegSuccess", it.user!!.uid)
-                         var user = User(it.user!!.uid.toString(), name, email, password, 1, 0)
+                         var user = User(it.user!!.uid.toString(), name, email, password, 7, 0)
                          writeNewUser(user, this.requireContext())
                          loginCard.visibility = View.VISIBLE
                          regCard.visibility = View.GONE

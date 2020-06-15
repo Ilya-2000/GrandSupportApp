@@ -110,6 +110,7 @@ class CourseFragment : Fragment() {
         bundle.putInt("level", user?.currentLevel!!)
         bundle.putInt("stage", user?.currentStage!!)
 
+
         exitBtn.setOnClickListener {
             val intent = Intent(Intent.ACTION_MAIN)
             intent.addCategory(Intent.CATEGORY_HOME)
@@ -131,8 +132,9 @@ class CourseFragment : Fragment() {
         }
         course2.setOnClickListener {
             if (user?.currentLevel!! > 1) {
+                processFun("course_2", bundle, navController, courseLayout, progressLayout)
                 bundle.putInt("courseNumber", 2)
-                navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
+                //navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
@@ -140,7 +142,7 @@ class CourseFragment : Fragment() {
         course3.setOnClickListener {
             if (user?.currentLevel!! > 2) {
                 bundle.putInt("courseNumber", 3)
-                navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
+                processFun("course_3", bundle, navController, courseLayout, progressLayout)
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
@@ -148,7 +150,7 @@ class CourseFragment : Fragment() {
         course4a.setOnClickListener {
             if (user?.currentLevel!! > 3) {
                 bundle.putInt("courseNumber", 4)
-                navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
+                Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
@@ -157,7 +159,7 @@ class CourseFragment : Fragment() {
 
             if (user?.currentLevel!! > 3) {
                 bundle.putInt("courseNumber", 5)
-                navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
+                Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
@@ -165,7 +167,7 @@ class CourseFragment : Fragment() {
         course5.setOnClickListener {
             if (user?.currentLevel!! > 4) {
                 bundle.putInt("courseNumber", 6)
-                navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
+                Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
@@ -173,7 +175,7 @@ class CourseFragment : Fragment() {
         course6a.setOnClickListener {
             if (user?.currentLevel!! > 5) {
                 bundle.putInt("courseNumber", 7)
-                navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
+                Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
@@ -182,7 +184,7 @@ class CourseFragment : Fragment() {
         course8.setOnClickListener {
             if (user?.currentLevel!! > 7) {
                 bundle.putInt("courseNumber", 10)
-                navController.navigate(R.id.action_courseFragment_to_lessonListFragment, bundle)
+                Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(activity, "Курс недоступен.", Toast.LENGTH_LONG).show()
             }
@@ -260,6 +262,8 @@ class CourseFragment : Fragment() {
             preCourse.level.toInt(),
             preCourse.lessonsId as MutableList<Int>
         )
+        var global = Global()
+        global.currentCourseGlobal = course?.level
         lessonGlobalMapList = preCourse.lessonsList
 
         Log.d("DataToCourse2", lessonGlobalMapList?.size.toString())

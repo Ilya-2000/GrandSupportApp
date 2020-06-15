@@ -77,6 +77,7 @@ class LessonListRvAdapter(var context: Context, var items: MutableList<Lesson>, 
             delay(500)
             var bundle = Bundle()
             bundle.putParcelable("lesson", lesson)
+            bundle.putInt("count", lessonList?.size!!)
             delay(100)
             Log.d("LessonComplete1", lesson?.name.toString())
             navController.navigate(R.id.action_lessonListFragment_to_lessonPlaceFragment, bundle)

@@ -42,8 +42,12 @@ class LessonPlaceFragment : Fragment() {
         val closeBtn = root.findViewById<ImageButton>(R.id.back_to_lesson_btn)
         val checkBtn = root.findViewById<ImageButton>(R.id.check_lesson_end_btn)
         lesson = arguments?.get("lesson") as Lesson
+
+        var count: Int
+        count = arguments?.get("count") as Int
         val navController = findNavController()
         val global = Global()
+        //count = global.countGlobal!!
         global.lesson = lesson
         //imageList = lesson?.imageList
         val viewPager = root.findViewById<ViewPager2>(R.id.lesson_vp)
@@ -71,6 +75,16 @@ class LessonPlaceFragment : Fragment() {
         })
 
         checkBtn.setOnClickListener {
+            if (count != global.stage) {
+                global.stage = global.stage + 1
+            } else if (global.level != global.currentCourseGlobal) {
+                global.level = global.level +1
+            } else {
+                global.stage = 0
+
+            }
+
+
             requireActivity().onBackPressed()
         }
         closeBtn.setOnClickListener {
